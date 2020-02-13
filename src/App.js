@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { NavLink } from 'react-router-dom';
+
 import logo from './assets/graphbrain-logo.gif';
 import './App.css';
 
@@ -10,6 +13,8 @@ function App() {
         <p>
         Language, Knowledge, Cognition
         </p>
+        <NavLink to="/map" className="navlink"> See Map </NavLink>
+
       </header>
     </div>
   );

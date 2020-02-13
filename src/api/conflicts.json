@@ -247,713 +247,713 @@
             "weight": 129
         }
     ],
-    "edges": [
+    "links": [
         {
-            "orig": "(+/b.am/. barack/cp.s/en obama/cp.s/en)",
-            "targ": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. barack/cp.s/en obama/cp.s/en)",
+            "target": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. barack/cp.s/en obama/cp.s/en)",
-            "targ": "china/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. barack/cp.s/en obama/cp.s/en)",
+            "target": "china/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
-            "targ": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
+            "target": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
-            "targ": "clinton/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
+            "target": "clinton/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
-            "targ": "democrats/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
+            "target": "democrats/cp.p/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
+            "target": "gop/cp.s/en",
+            "type": "claim",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 3
         },
         {
-            "orig": "(+/b.am/. bill/cp.s/en clinton/cp.s/en)",
-            "targ": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. bill/cp.s/en clinton/cp.s/en)",
+            "target": "(+/b.am/. bernie/cp.s/en sanders/cp.s/en)",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. bill/cp.s/en clinton/cp.s/en)",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. bill/cp.s/en clinton/cp.s/en)",
+            "target": "republicans/cp.p/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. bill/cp.s/en clinton/cp.s/en)",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. bill/cp.s/en clinton/cp.s/en)",
+            "target": "trump/cp.s/en",
+            "type": "support",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "targ": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "target": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "targ": "democrats/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "target": "democrats/cp.p/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "target": "gop/cp.s/en",
+            "type": "support",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "target": "obama/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "target": "republicans/cp.p/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "target": "trump/cp.s/en",
+            "type": "neutral",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. harry/cp.s/en reid/cp.s/en)",
-            "targ": "comey/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. harry/cp.s/en reid/cp.s/en)",
+            "target": "comey/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. harry/cp.s/en reid/cp.s/en)",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. harry/cp.s/en reid/cp.s/en)",
+            "target": "gop/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
+            "target": "obama/cp.s/en",
+            "type": "neutral",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
+            "target": "trump/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. lindsey/cp.s/en graham/cp.s/en)",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. lindsey/cp.s/en graham/cp.s/en)",
+            "target": "gop/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. lindsey/cp.s/en graham/cp.s/en)",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. lindsey/cp.s/en graham/cp.s/en)",
+            "target": "trump/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
+            "target": "trump/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. president/cp.s/en obama/cp.s/en)",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. president/cp.s/en obama/cp.s/en)",
+            "target": "republicans/cp.p/en",
+            "type": "neutral",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. president/cp.s/en trump/cp.s/en)",
-            "targ": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. president/cp.s/en trump/cp.s/en)",
+            "target": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. president/cp.s/en trump/cp.s/en)",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. president/cp.s/en trump/cp.s/en)",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. president/cp.s/en trump/cp.s/en)",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. president/cp.s/en trump/cp.s/en)",
+            "target": "republicans/cp.p/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
-            "targ": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
+            "target": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
-            "targ": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
+            "target": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
+            "target": "gop/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. sarah/cp.s/en palin/cp.s/en)",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. sarah/cp.s/en palin/cp.s/en)",
+            "target": "obama/cp.s/en",
+            "type": "support",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. sarah/cp.s/en palin/cp.s/en)",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. sarah/cp.s/en palin/cp.s/en)",
+            "target": "trump/cp.s/en",
+            "type": "support",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. scott/cp.s/en walker/cp.s/en)",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. scott/cp.s/en walker/cp.s/en)",
+            "target": "obama/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
-            "targ": "(+/b.am/. president/cp.s/en obama/cp.s/en)",
-            "type": "directed",
+            "source": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
+            "target": "(+/b.am/. president/cp.s/en obama/cp.s/en)",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
-            "targ": "democrats/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. ted/cp.s/en cruz/cp.s/en)",
+            "target": "democrats/cp.p/en",
+            "type": "support",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "targ": "congress/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "target": "congress/cp.s/en",
+            "type": "neutral",
             "weight": 4
         },
         {
-            "orig": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "target": "gop/cp.s/en",
+            "type": "neutral",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "target": "obama/cp.s/en",
+            "type": "neutral",
             "weight": 2
         },
         {
-            "orig": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "target": "republicans/cp.p/en",
+            "type": "neutral",
             "weight": 3
         },
         {
-            "orig": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "targ": "russia/cp.s/en",
-            "type": "directed",
+            "source": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "target": "russia/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "americans/cp.p/en",
-            "targ": "(+/b.am/. president/cp.s/en obama/cp.s/en)",
-            "type": "directed",
+            "source": "americans/cp.p/en",
+            "target": "(+/b.am/. president/cp.s/en obama/cp.s/en)",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "americans/cp.p/en",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "americans/cp.p/en",
+            "target": "gop/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "americans/cp.p/en",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "americans/cp.p/en",
+            "target": "republicans/cp.p/en",
+            "type": "neutral",
             "weight": 2
         },
         {
-            "orig": "biden/cp.s/en",
-            "targ": "clinton/cp.s/en",
-            "type": "directed",
+            "source": "biden/cp.s/en",
+            "target": "clinton/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "biden/cp.s/en",
-            "targ": "democrats/cp.p/en",
-            "type": "directed",
+            "source": "biden/cp.s/en",
+            "target": "democrats/cp.p/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "biden/cp.s/en",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "biden/cp.s/en",
+            "target": "gop/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "biden/cp.s/en",
-            "targ": "romney/cp.s/en",
-            "type": "directed",
+            "source": "biden/cp.s/en",
+            "target": "romney/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "boehner/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "boehner/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 5
         },
         {
-            "orig": "china/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "china/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 9
         },
         {
-            "orig": "china/cp.s/en",
-            "targ": "u_s_/cp.s/en",
-            "type": "directed",
+            "source": "china/cp.s/en",
+            "target": "u_s_/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "christie/cp.s/en",
-            "targ": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
-            "type": "directed",
+            "source": "christie/cp.s/en",
+            "target": "(+/b.am/. rand/cp.s/en paul/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "christie/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "christie/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 2
         },
         {
-            "orig": "clinton/cp.s/en",
-            "targ": "china/cp.s/en",
-            "type": "directed",
+            "source": "clinton/cp.s/en",
+            "target": "china/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "clinton/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "clinton/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 2
         },
         {
-            "orig": "clinton/cp.s/en",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "clinton/cp.s/en",
+            "target": "republicans/cp.p/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "clinton/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "clinton/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 10
         },
         {
-            "orig": "comey/cp.s/en",
-            "targ": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "type": "directed",
+            "source": "comey/cp.s/en",
+            "target": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "congress/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "congress/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "congress/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "congress/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "democrats/cp.p/en",
-            "targ": "(+/b.am/. white/cp.s/en house/cp.s/en)",
-            "type": "directed",
+            "source": "democrats/cp.p/en",
+            "target": "(+/b.am/. white/cp.s/en house/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "democrats/cp.p/en",
-            "targ": "rubio/cp.s/en",
-            "type": "directed",
+            "source": "democrats/cp.p/en",
+            "target": "rubio/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "democrats/cp.p/en",
-            "targ": "russia/cp.s/en",
-            "type": "directed",
+            "source": "democrats/cp.p/en",
+            "target": "russia/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "gop/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "gop/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "support",
             "weight": 3
         },
         {
-            "orig": "gop/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "gop/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "kerry/cp.s/en",
-            "targ": "congress/cp.s/en",
-            "type": "directed",
+            "source": "kerry/cp.s/en",
+            "target": "congress/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "kerry/cp.s/en",
-            "targ": "russia/cp.s/en",
-            "type": "directed",
+            "source": "kerry/cp.s/en",
+            "target": "russia/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "kerry/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "kerry/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "mccain/cp.s/en",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "mccain/cp.s/en",
+            "target": "gop/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "mccain/cp.s/en",
-            "targ": "paul/cp.s/en",
-            "type": "directed",
+            "source": "mccain/cp.s/en",
+            "target": "paul/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "mccain/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "mccain/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "support",
             "weight": 8
         },
         {
-            "orig": "mcconnell/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "mcconnell/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "support",
             "weight": 4
         },
         {
-            "orig": "mcconnell/cp.s/en",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "mcconnell/cp.s/en",
+            "target": "republicans/cp.p/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "mcconnell/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "mcconnell/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "(+/b.am/. elizabeth/cp.s/en warren/cp.s/en)",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "(+/b.am/. scott/cp.s/en walker/cp.s/en)",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "(+/b.am/. scott/cp.s/en walker/cp.s/en)",
+            "type": "neutral",
             "weight": 2
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "americans/cp.p/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "americans/cp.p/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "boehner/cp.s/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "boehner/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "china/cp.s/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "china/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "congress/cp.s/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "congress/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "democrats/cp.p/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "democrats/cp.p/en",
+            "type": "neutral",
             "weight": 3
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "gop/cp.s/en",
+            "type": "neutral",
             "weight": 6
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "republicans/cp.p/en",
+            "type": "neutral",
             "weight": 5
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "russia/cp.s/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "russia/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "obama/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "obama/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "neutral",
             "weight": 20
         },
         {
-            "orig": "paul/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "paul/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "pence/cp.s/en",
-            "targ": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
-            "type": "directed",
+            "source": "pence/cp.s/en",
+            "target": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "pence/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "pence/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "neutral",
             "weight": 1
         },
         {
-            "orig": "republicans/cp.p/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "republicans/cp.p/en",
+            "target": "obama/cp.s/en",
+            "type": "neutral",
             "weight": 12
         },
         {
-            "orig": "republicans/cp.p/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "republicans/cp.p/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "romney/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "romney/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "romney/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "romney/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "rubio/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "rubio/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "rubio/cp.s/en",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "rubio/cp.s/en",
+            "target": "republicans/cp.p/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "rubio/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "rubio/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "russia/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "russia/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "russia/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "russia/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "russia/cp.s/en",
-            "targ": "u_s_/cp.s/en",
-            "type": "directed",
+            "source": "russia/cp.s/en",
+            "target": "u_s_/cp.s/en",
+            "type": "claim",
             "weight": 3
         },
         {
-            "orig": "schumer/cp.s/en",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "schumer/cp.s/en",
+            "target": "gop/cp.s/en",
+            "type": "claim",
             "weight": 4
         },
         {
-            "orig": "schumer/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "schumer/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "senator/cp.s/en",
-            "targ": "trump/cp.s/en",
-            "type": "directed",
+            "source": "senator/cp.s/en",
+            "target": "trump/cp.s/en",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "snowden/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "snowden/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 2
         },
         {
-            "orig": "spicer/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "spicer/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 2
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "(+/b.am/. jeb/cp.s/en bush/cp.s/en)",
+            "type": "claim",
             "weight": 1
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
+            "type": "claim",
             "weight": 2
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "china/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "china/cp.s/en",
+            "type": "claim",
             "weight": 3
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "clinton/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "clinton/cp.s/en",
+            "type": "claim",
             "weight": 15
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "comey/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "comey/cp.s/en",
+            "type": "claim",
             "weight": 9
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "democrats/cp.p/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "democrats/cp.p/en",
+            "type": "claim",
             "weight": 12
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "gop/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "gop/cp.s/en",
+            "type": "claim",
             "weight": 6
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "mccain/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "mccain/cp.s/en",
+            "type": "claim",
             "weight": 4
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "obama/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "obama/cp.s/en",
+            "type": "claim",
             "weight": 38
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "republicans/cp.p/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "republicans/cp.p/en",
+            "type": "claim",
             "weight": 2
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "romney/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "romney/cp.s/en",
+            "type": "support",
             "weight": 2
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "russia/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "russia/cp.s/en",
+            "type": "support",
             "weight": 2
         },
         {
-            "orig": "trump/cp.s/en",
-            "targ": "schumer/cp.s/en",
-            "type": "directed",
+            "source": "trump/cp.s/en",
+            "target": "schumer/cp.s/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "u_s_/cp.s/en",
-            "targ": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
-            "type": "directed",
+            "source": "u_s_/cp.s/en",
+            "target": "(+/b.am/. north/cp.s/en korea/cp.s/en)",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "u_s_/cp.s/en",
-            "targ": "americans/cp.p/en",
-            "type": "directed",
+            "source": "u_s_/cp.s/en",
+            "target": "americans/cp.p/en",
+            "type": "support",
             "weight": 1
         },
         {
-            "orig": "u_s_/cp.s/en",
-            "targ": "russia/cp.s/en",
-            "type": "directed",
+            "source": "u_s_/cp.s/en",
+            "target": "russia/cp.s/en",
+            "type": "support",
             "weight": 1
         }
     ]
