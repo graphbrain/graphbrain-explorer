@@ -18,12 +18,16 @@ class Map extends Component {
       links: data.links,
       width: 600,
       height: 600,
-      types: ["claim", "support", "neutral"]
+      types: ["conflict"]
     }
+
+    this.drag = this.drag.bind(this);
+
   }
 
   componentDidMount() {
     const { width, height, types, nodes, links } = this.state;
+
     
     const simulation = d3.forceSimulation(nodes)
     .force("link", d3.forceLink(links).id(d => d.id))
@@ -39,10 +43,11 @@ class Map extends Component {
       `;
     }
 
-    const color = d3.scaleOrdinal(types, d3.schemeCategory10)
+    const color = d3.scaleOrdinal(types, d3.schemeCategory10);
+
 
     const svg = d3.select("svg")
-    .attr("viewBox", [-width / 2, -height / 2, width, height])
+    .attr("viewBox", [-width / 2 - 50, -height / 2 + 60, width, height])
     .style("font", "12px sans-serif");
 
     svg.append("defs").selectAll("marker")
@@ -52,8 +57,8 @@ class Map extends Component {
       .attr("viewBox", "0 -5 10 10")
       .attr("refX", 15)
       .attr("refY", -0.5)
-      .attr("markerWidth", 6)
-      .attr("markerHeight", 6)
+      .attr("markerWidth", 5)
+      .attr("markerHeight", 5)
       .attr("orient", "auto")
     .append("path")
       .attr("fill", color)
@@ -66,16 +71,51 @@ class Map extends Component {
       .data(links)
       .join("path")
       .attr("stroke", d => color(d.type))
-      // .attr("marker-end", d => `url(${new URL(`#arrow-${d}}`, location)})`);
-      .attr('marker-end',d => `url(#arrow-${d.type})`)
+      .attr('marker-end',d => d.directed ? `url(#arrow-${d.type})` : '')
+
+      link.append("title")
+      .text(d => d.label);
+
+      const linkpaths = svg.selectAll(".linkpath")
+      .data(links)
+      .enter()
+      .append('path')
+      .attr("class", "linkpath")
+      .attr("fill-opacity", 0)
+      .attr("stroke-opacity", 0)
+      .attr("id", (d, i) => "linkpath" + i)
+      .style("pointer-events", "none");
+
+     const linklabels = svg.selectAll(".linklabels")
+          .data(links)
+          .enter()
+          .append('text')
+          .style("pointer-events", "none")
+          .attr("class", "linklabels")
+          .attr("font-size", 4)
+          .attr("fill", "#aaa")
+          .attr("id", (d, i) => "linklabel" + i)
+      
+
+          linklabels.append('textPath')
+          .attr('xlink:href', (d, i) => '#linkpath' + i)
+          .style("text-anchor", "middle")
+          .style("pointer-events", "none")
+          .attr("startOffset", "50%")
+          .text(d => d.label);
+
+
+      
 
       const node = svg.append("g")
       .attr("fill", "currentColor")
       .attr("stroke-linecap", "round")
       .attr("stroke-linejoin", "round")
-    .selectAll("g")
-    .data(nodes)
-    .join("g")
+      .selectAll("g")
+      .data(nodes)
+      .join("g") 
+      .call(this.drag(simulation));
+
 
     node.append("circle")
     .attr("stroke", "white")
@@ -86,17 +126,44 @@ class Map extends Component {
       .attr("x", 8)
       .attr("y", "0.31em")
       .text(d => d.label)
-    .clone(true).lower()
+      .clone(true).lower()
       .attr("fill", "none")
       .attr("stroke", "white")
       .attr("stroke-width", 3);
 
       simulation.on("tick", () => {
-        link.attr("d", linkArc);
+        link.attr("d", linkArc).attr("class", "linkArc");
         node.attr("transform", d => `translate(${d.x},${d.y})`);
+        linkpaths.attr('d', d => 
+           `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`
+      );
       });
-  
 
+  }
+
+  drag (simulation) {
+  
+    function dragstarted(d) {
+      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+  
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+  
+    function dragended(d) {
+      if (!d3.event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+  
+    return d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
   }
 
 
