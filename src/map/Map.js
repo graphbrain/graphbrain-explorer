@@ -10,21 +10,35 @@ import * as data from '../api/conflicts.json';
 class Map extends Component {
   constructor(props) {
     super(props);
+
+    const uniqueTypes = [];
+    data.links.forEach(link => {
+      if (uniqueTypes.indexOf(link.type) === -1) {
+        uniqueTypes.push(link.type);
+      }
+    })
+
     this.state = {
       nodes: data.nodes,
       links: data.links,
       width: 600,
       height: 600,
-      types: ["conflict"]
+      types: uniqueTypes
     }
   }
 
   componentDidMount() {
     const { width, height, types, nodes, links } = this.state;
+    var xScale = d3.scalePoint()
+    // .domain([1, 2, 3, 4])
+    .range([100, width - 100]);
     
+
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id))
       .force("charge", d3.forceManyBody().strength(-400))
+      // .force("x", d3.forceX(d => (d.x * 10)))
+      // .force("y", d3.forceY(d => (d.y * 10)));
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
@@ -81,7 +95,7 @@ class Map extends Component {
       .append('text')
       .style("pointer-events", "none")
       .attr("class", "linklabels")
-      .attr("font-size", 4)
+      .attr("font-size", 5)
       .attr("fill", "#aaa")
       .attr("id", (d, i) => "linklabel" + i)  
 
@@ -104,7 +118,8 @@ class Map extends Component {
       node.append("circle")
         .attr("stroke", "white")
         .attr("stroke-width", 1.5)
-        .attr("r", 3);
+        .attr("fill", "red")
+        .attr("r", d => d.weight  / 5);
 
       node.append("text")
         .attr("x", 8)
@@ -125,18 +140,19 @@ class Map extends Component {
   }
 
   drag (simulation) {
-    function dragstarted(d) {
+    
+  const dragstarted = (d) => {
       if (!d3.event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
       d.fy = d.y;
     }
   
-    function dragged(d) {
+  const dragged = (d) => {
       d.fx = d3.event.x;
       d.fy = d3.event.y;
     }
   
-    function dragended(d) {
+  const dragended = (d) => {
       if (!d3.event.active) simulation.alphaTarget(0);
       d.fx = null;
       d.fy = null;
