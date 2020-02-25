@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import Map from './map/Map';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
 const Index = () => (
   <Router>
     <div>
-      <Route path="/" component={App} />
+      <Route exact path="/" component={App} />
+      <Route path="/map" component={Map} />
     </div>
   </Router>
 )
