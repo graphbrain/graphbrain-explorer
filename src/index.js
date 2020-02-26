@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Map from './map/Map';
+import Maps from './map/Maps';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
@@ -10,7 +10,7 @@ const Index = () => (
   <Router>
     <div>
       <Route exact path="/" component={App} />
-      <Route path="/map" component={Map} />
+      <Route path="/map" component={Maps} />
     </div>
   </Router>
 )

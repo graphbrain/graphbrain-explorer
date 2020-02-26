@@ -13,8 +13,10 @@ function App() {
         <p>
         Language, Knowledge, Cognition
         </p>
-        <NavLink to="/map" className="navlink"> See Map </NavLink>
-
+        <div className="buttonArea">
+          <NavLink to="/map?1" className="navlink"> See Map1 </NavLink>
+          <NavLink to="/map?2" className="navlink"> See Map2 </NavLink>
+        </div>
       </header>
     </div>
   );

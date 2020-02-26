@@ -29,6 +29,10 @@
   color: #61dafb;
 }
 
+.buttonArea {
+  display: flex;
+}
+
 .navlink {
   height: 50px;
   width: 100px;
@@ -39,7 +43,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
+}
 
+.mapsArea .navlink {
+  background-color: #282c34;
+  
 }
 
 @keyframes App-logo-spin {

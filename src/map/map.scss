@@ -1,4 +1,8 @@
 
+.mapsArea {
+  padding: 20px;
+}
+
 .mapWrapper {
   display: flex;
   justify-content: center;
@@ -6,6 +10,17 @@
   align-content: center;
 }
 
-svg {
-  // background-color: gray;
+.backNavLink {
+  height: 50px;
+  width: 100px;
+  background-color: #282c34;
+  color: #282c34;
+  font-size: 14px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  text-decoration: none;
+  color: white;
 }
