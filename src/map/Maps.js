@@ -22,7 +22,7 @@ class Maps extends Component {
   componentDidMount() {
     getData(this.state.apiNum).then(data => {
       console.log(data);
-      this.setState({data})
+      this.setState({data: data["viz-blocks"][0]})
     });
   }
 
