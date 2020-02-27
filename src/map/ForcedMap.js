@@ -21,7 +21,8 @@ class Map extends Component {
       links: this.props.data.links,
       width: 600,
       height: 600,
-      types: uniqueTypes
+      types: uniqueTypes,
+      linkHovered: null
     }
   }
 
@@ -36,7 +37,6 @@ class Map extends Component {
     const calcDiameter = weight => {
       const minWeight = Math.min.apply(null, nodes.map(node => node.weight));
       const maxWeight = Math.max.apply(null, nodes.map(node => node.weight));
-
       const minD = 2;
       const maxD = 15;
 
@@ -44,8 +44,20 @@ class Map extends Component {
       const d = minD + newWeight * ( maxD - minD);
 
       return d;
-
     }
+
+    const calcLinkWidth = weight => {
+      const minWeight = Math.min.apply(null, links.map(link => link.weight));
+      const maxWeight = Math.max.apply(null, links.map(link => link.weight));
+      const minW = 1;
+      const maxW = 3;
+
+      const newWeight = (weight - minWeight) / (maxWeight - minWeight);
+      const w = minW + newWeight * ( maxW - minW);
+
+      return w;
+    }
+
     
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id))
@@ -64,6 +76,7 @@ class Map extends Component {
     }
 
     const color = d3.scaleOrdinal(types, d3.schemeCategory10);
+
 
     const svg = d3.select("svg")
     .attr("viewBox", [-width / 2 - 50, -height / 2 + 60, width, height])
@@ -85,12 +98,20 @@ class Map extends Component {
 
     const link = svg.append("g")
       .attr("fill", "none")
-      .attr("stroke-width", 1.5)
       .selectAll("path")
       .data(links)
       .join("path")
       .attr("stroke", d => color(d.type))
+      .attr("stroke-width", d => calcLinkWidth(d.weight))
       .attr('marker-end',d => d.directed ? `url(#arrow-${d.type})` : '')
+      .on('mouseover', d => {
+        d3.select(`#linklabel${d.index}`).style("visibility", "visible")
+        this.setState({linkHovered: d.index});
+      })
+      .on('mouseout', d => {
+        d3.select(`#linklabel${d.index}`).style("visibility", "hidden")
+      })
+     
 
     const linkpaths = svg.selectAll(".linkpath")
       .data(links)
@@ -99,8 +120,9 @@ class Map extends Component {
       .attr("class", "linkpath")
       .attr("fill-opacity", 0)
       .attr("stroke-opacity", 0)
-      .attr("id", (d, i) => "linkpath" + i)
-      .style("pointer-events", "none");
+      .attr("id", d => "linkpath" + d.index)
+      .style("pointer-events", "none")
+    
 
     const linklabels = svg.selectAll(".linklabels")
       .data(links)
@@ -108,16 +130,19 @@ class Map extends Component {
       .append('text')
       .style("pointer-events", "none")
       .attr("class", "linklabels")
-      .attr("font-size", 5)
-      .attr("fill", "#aaa")
-      .attr("id", (d, i) => "linklabel" + i)  
+      .attr("font-size", 8)
+      .attr("fill", "#00000")
+      .attr("id", d => "linklabel" + d.index)
+      .style("visibility", "hidden");
+  
+
 
     linklabels.append('textPath')
-      .attr('xlink:href', (d, i) => '#linkpath' + i)
+      .attr('xlink:href', d => '#linkpath' + d.index)
       .style("text-anchor", "middle")
       .style("pointer-events", "none")
       .attr("startOffset", "50%")
-      .text(d => d.label);
+      .text(d => d.label)
 
       const node = svg.append("g")
         .attr("fill", "currentColor")
@@ -132,6 +157,7 @@ class Map extends Component {
         .attr("stroke", "white")
         .attr("stroke-width", 1.5)
         .attr("fill", "red")
+        // .attr("opacity", 0.7)
         .attr("r", d => calcDiameter(d.weight));
 
       node.append("text")
@@ -146,9 +172,9 @@ class Map extends Component {
       simulation.on("tick", () => {
         link.attr("d", linkArc).attr("class", "linkArc");
         node.attr("transform", d => `translate(${d.x},${d.y})`);
-        // linkpaths.attr('d', d => 
-        //    `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`
-        // );
+        linkpaths.attr('d', d => 
+           `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`
+        );
       });
   }
 

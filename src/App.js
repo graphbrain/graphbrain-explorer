@@ -14,8 +14,8 @@ function App() {
         Language, Knowledge, Cognition
         </p>
         <div className="buttonArea">
-          <NavLink to="/map?1" className="navlink"> See Map1 </NavLink>
-          <NavLink to="/map?2" className="navlink"> See Map2 </NavLink>
+          <NavLink to="/map?1" className="navlink"> Force-directed map </NavLink>
+          <NavLink to="/map?2" className="navlink"> Pre-defined Map </NavLink>
         </div>
       </header>
     </div>
