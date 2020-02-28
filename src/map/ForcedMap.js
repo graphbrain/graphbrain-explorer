@@ -5,7 +5,7 @@ import * as d3 from "d3";
 import './map.scss';
 
 
-class Map extends Component {
+class ForcedMap extends Component {
   constructor(props) {
     super(props);
 
@@ -212,4 +212,4 @@ class Map extends Component {
   }
 } 
 
-export default Map;
+export default ForcedMap;

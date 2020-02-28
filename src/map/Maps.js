@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import ForcedMap from './ForcedMap';
+import PredefinedMap from './PredefinedMap';
 
 import {getData} from '../api/getData';
 
@@ -22,7 +23,7 @@ class Maps extends Component {
   componentDidMount() {
     getData(this.state.apiNum).then(data => {
       console.log(data);
-      this.setState({data: data["viz-blocks"][0]})
+      this.setState({data: data["viz_blocks"][0]})
     });
   }
 
@@ -34,7 +35,7 @@ class Maps extends Component {
         return <ForcedMap data={this.state.data}/>;
         break;
         case '2': 
-        return <ForcedMap data={this.state.data}/>;
+        return <PredefinedMap data={this.state.data}/>;
         default:
           //do nothing
       }
