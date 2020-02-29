@@ -18,6 +18,9 @@ class PredefinedMap extends Component {
       }
     })
 
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+
     this.state = {
       nodes: this.props.data.nodes,
       links: this.props.data.links,
@@ -32,7 +35,7 @@ class PredefinedMap extends Component {
   componentDidMount() {
     const { width, height, margin, types, nodes, links } = this.state;
 
-    const multi = 320;
+    const multi = 300;
 
     const svg = d3.select("svg")
     .attr("viewBox", [-width / 2 + 150, -height / 2 + 300, width, height])

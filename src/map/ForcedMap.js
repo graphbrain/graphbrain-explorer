@@ -19,20 +19,22 @@ class ForcedMap extends Component {
     this.state = {
       nodes: this.props.data.nodes,
       links: this.props.data.links,
+      fullListNodes: this.props.data.nodes,
+      fullListLinks: this.props.data.links, 
       width: 600,
       height: 600,
       types: uniqueTypes,
       linkHovered: null
     }
+
+    this.drawMap = this.drawMap.bind(this);
   }
 
-
-  componentDidMount() {
+  drawMap() {
     const { width, height, types, nodes, links } = this.state;
     
-    var xScale = d3.scalePoint()
-    // .domain([1, 2, 3, 4])
-    .range([100, width - 100]);
+    console.log('draw');
+    console.log(this.state);
     
     const calcDiameter = weight => {
       const minWeight = Math.min.apply(null, nodes.map(node => node.weight));
@@ -104,6 +106,7 @@ class ForcedMap extends Component {
       .attr("stroke", d => color(d.type))
       .attr("stroke-width", d => calcLinkWidth(d.weight))
       .attr('marker-end',d => d.directed ? `url(#arrow-${d.type})` : '')
+      .attr('class', 'linkAndArrow')
       .on('mouseover', d => {
         d3.select(`#linklabel${d.index}`).style("visibility", "visible")
         this.setState({linkHovered: d.index});
@@ -136,7 +139,6 @@ class ForcedMap extends Component {
       .style("visibility", "hidden");
   
 
-
     linklabels.append('textPath')
       .attr('xlink:href', d => '#linkpath' + d.index)
       .style("text-anchor", "middle")
@@ -157,8 +159,10 @@ class ForcedMap extends Component {
         .attr("stroke", "white")
         .attr("stroke-width", 1.5)
         .attr("fill", "red")
-        // .attr("opacity", 0.7)
+        .attr("id", d => d.id)
+        .attr("class", "nodeCircle")
         .attr("r", d => calcDiameter(d.weight));
+        
 
       node.append("text")
         .attr("x", 8)
@@ -170,8 +174,22 @@ class ForcedMap extends Component {
         .attr("stroke-width", 3);
 
       simulation.on("tick", () => {
-        link.attr("d", linkArc).attr("class", "linkArc");
-        node.attr("transform", d => `translate(${d.x},${d.y})`);
+        link.attr("d", linkArc).attr("class", "linkArc")
+       
+        node.attr("transform", d => `translate(${d.x},${d.y})`)
+        .on("mouseover", d => {
+          d3.selectAll('.linkArc')
+          .style("display", l => {
+            if ((l.source.id !== d.id) && (l.target.id !== d.id)) {
+              return "none"
+            }
+            else return "block";
+          })
+        })
+        .on("mouseout", d => {
+          d3.selectAll('.linkArc')
+          .style("display", "block")
+        })
         linkpaths.attr('d', d => 
            `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`
         );
@@ -201,6 +219,11 @@ class ForcedMap extends Component {
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended);
+  }
+
+  componentDidMount() {
+  const { nodes, links } = this.state;
+    this.drawMap();
   }
 
 
