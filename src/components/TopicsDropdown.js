@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
@@ -49,17 +49,17 @@ class TopicsDropdown extends Component {
     }
 
     return (
-      <div className="dropdownWrapper">
-      <form onSubmit={() => this.handleSubmit()}>
-        <input list="topics" name="topic" onChange={(e) => this.handleInputChange(e)}/>
-        <datalist id="topics">
-          {renderList()}
-        </datalist>
-        {this.state.chosenTopic && (
-          <NavLink to={`/map?topic=${this.state.chosenTopic}`}> Pre-defined Map </NavLink>) }
-      </form>
-
-    </div>
+        <div className="dropdownWrapper">
+          <p className="dropdownTitle">Please choose a topic:</p>
+          <form onSubmit={() => this.handleSubmit()}>
+            <input list="topics" name="topic" onChange={(e) => this.handleInputChange(e)}/>
+            <datalist id="topics">
+              {renderList()}
+            </datalist>
+          </form>
+          {this.state.chosenTopic && (
+          <NavLink to={`/map?topic=${this.state.chosenTopic}`} className="navLivk"> Create Map </NavLink>) }
+      </div>
     )
   }
 }

@@ -31,11 +31,12 @@
 
 .buttonArea {
   display: flex;
+  align-items: center;
 }
 
 .navlink {
-  height: 50px;
-  width: 100px;
+  height: 30px;
+  width: 130px;
   background-color: #e7e7e7;
   color: #282c34;
   font-size: 14px;
