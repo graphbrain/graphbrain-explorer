@@ -226,7 +226,7 @@ class ForcedMap extends Component {
 
     return (
       <Fragment>
-        <h2 className="mapTitle">{this.props.topic}</h2>
+        <h2 className="mapTitle">{this.props.topic.label}</h2>
           <svg />
       </Fragment>
     )

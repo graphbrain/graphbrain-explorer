@@ -14,11 +14,9 @@ class Maps extends Component {
   constructor(props) {
     super(props);
 
-    console.log(window.location.search.slice(window.location.search.indexOf('=') + 1))
-
     this.state = {
       data: null,
-      apiSearch: window.location.search.slice(window.location.search.indexOf('=') + 1)
+      apiSearch: this.props.chosenTopic.url ? this.props.chosenTopic.url.slice(this.props.chosenTopic.url.lastIndexOf('/')) : "2"
     }
   }
 
@@ -36,7 +34,7 @@ class Maps extends Component {
         case '2': 
         return <PredefinedMap data={this.state.data}/>;
         default:
-          return <ForcedMap data={this.state.data} topic={this.state.apiSearch}/>;
+          return <ForcedMap data={this.state.data} topic={this.props.chosenTopic}/>;
       }
     } 
     else return null;  
@@ -44,7 +42,7 @@ class Maps extends Component {
 
     return (
       <div className="mapsArea">
-        <NavLink to="/" className="backNavLink"> Go back </NavLink>
+        <button className="backNavLink" onClick={this.props.handleBackClick}> Go back </button>
         {mapToRender()}
       </div>
     )
