@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import * as d3 from "d3";
 
@@ -8,7 +8,7 @@ import './map.scss';
 class ForcedMap extends Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props)
     const uniqueTypes = [];
     this.props.data.links.forEach(link => {
       if (uniqueTypes.indexOf(link.type) === -1) {
@@ -32,10 +32,7 @@ class ForcedMap extends Component {
 
   drawMap() {
     const { width, height, types, nodes, links } = this.state;
-    
-    console.log('draw');
-    console.log(this.state);
-    
+        
     const calcDiameter = weight => {
       const minWeight = Math.min.apply(null, nodes.map(node => node.weight));
       const maxWeight = Math.max.apply(null, nodes.map(node => node.weight));
@@ -64,8 +61,6 @@ class ForcedMap extends Component {
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id))
       .force("charge", d3.forceManyBody().strength(-400))
-      // .force("x", d3.forceX(d => (d.x * 10)))
-      // .force("y", d3.forceY(d => (d.y * 10)));
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
@@ -230,7 +225,10 @@ class ForcedMap extends Component {
   render() {
 
     return (
-        <svg />
+      <Fragment>
+        <h2 className="mapTitle">{this.props.topic}</h2>
+          <svg />
+      </Fragment>
     )
   }
 } 

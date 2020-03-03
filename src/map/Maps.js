@@ -14,14 +14,16 @@ class Maps extends Component {
   constructor(props) {
     super(props);
 
+    console.log(window.location.search.slice(window.location.search.indexOf('=') + 1))
+
     this.state = {
       data: null,
-      apiNum: window.location.search[1]
+      apiSearch: window.location.search.slice(window.location.search.indexOf('=') + 1)
     }
   }
 
   componentDidMount() {
-    getData(this.state.apiNum).then(data => {
+    getData(this.state.apiSearch).then(data => {
       console.log(data);
       this.setState({data: data["viz_blocks"][0]})
     });
@@ -30,14 +32,11 @@ class Maps extends Component {
   render() {
     const mapToRender = () => {
     if (this.state.data) {
-      switch(this.state.apiNum) {
-        case '1':
-        return <ForcedMap data={this.state.data}/>;
-        break;
+      switch(this.state.apiSearch) {
         case '2': 
         return <PredefinedMap data={this.state.data}/>;
         default:
-          //do nothing
+          return <ForcedMap data={this.state.data} topic={this.state.apiSearch}/>;
       }
     } 
     else return null;  

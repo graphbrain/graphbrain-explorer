@@ -2,7 +2,10 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import TopicsDropdown from './components/TopicsDropdown';
+
 import logo from './assets/graphbrain-logo.gif';
+
 import './App.css';
 
 function App() {
@@ -14,8 +17,9 @@ function App() {
         Language, Knowledge, Cognition
         </p>
         <div className="buttonArea">
-          <NavLink to="/map?1" className="navlink"> Force-directed map </NavLink>
-          <NavLink to="/map?2" className="navlink"> Pre-defined Map </NavLink>
+          <TopicsDropdown />
+          {/* <NavLink to="/map?1" className="navlink"> Force-directed map </NavLink> */}
+          <NavLink to="/map?topic=2" className="navlink"> Pre-defined Map </NavLink>
         </div>
       </header>
     </div>

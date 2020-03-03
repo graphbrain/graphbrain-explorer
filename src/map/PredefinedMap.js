@@ -18,9 +18,6 @@ class PredefinedMap extends Component {
       }
     })
 
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-
     this.state = {
       nodes: this.props.data.nodes,
       links: this.props.data.links,

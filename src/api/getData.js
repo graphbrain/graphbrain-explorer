@@ -1,6 +1,21 @@
 
 export const getData = (graphType) => {
-  return fetch(`http://localhost:5000/api/conflicts${graphType}`)
+  // const ending = graphType === '1' ? '/all' : '2';
+
+  const findEnding = () => {
+    switch(graphType) {
+      case 'topics':
+      return '/topics';
+      case '1':
+      return '1';
+      case '2':
+      return '2';
+      default:
+      return `/topic?topic=${graphType}%2Fcp.s%2Fen`;
+    }
+  }
+
+  return fetch(`http://localhost:5000/api/conflicts${findEnding()}`)
   .then(response => {
     return response.json();
   }).then(data => {
@@ -12,3 +27,4 @@ export const getData = (graphType) => {
 }
 
 export default getData;
+
