@@ -8,7 +8,7 @@ const TopicsDropdown = (props) => {
 
   const renderList = () => {
     return conflictsList.map(conf => (
-          <option value={conf.label} key={conf.id}/>
+          <option value={conf.label} key={conf.id} className="topicOption"/>
         )
       )
     }

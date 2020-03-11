@@ -111,35 +111,35 @@ class ForcedMap extends Component {
       })
      
 
-    const linkpaths = svg.selectAll(".linkpath")
-      .data(links)
-      .enter()
-      .append('path')
-      .attr("class", "linkpath")
-      .attr("fill-opacity", 0)
-      .attr("stroke-opacity", 0)
-      .attr("id", d => "linkpath" + d.index)
-      .style("pointer-events", "none")
+    // const linkpaths = svg.selectAll(".linkpath")
+    //   .data(links)
+    //   .enter()
+    //   .append('path')
+    //   .attr("class", "linkpath")
+    //   .attr("fill-opacity", 0)
+    //   .attr("stroke-opacity", 0)
+    //   .attr("id", d => "linkpath" + d.index)
+    //   .style("pointer-events", "none")
     
 
-    const linklabels = svg.selectAll(".linklabels")
-      .data(links)
-      .enter()
-      .append('text')
-      .style("pointer-events", "none")
-      .attr("class", "linklabels")
-      .attr("font-size", 8)
-      .attr("fill", "#00000")
-      .attr("id", d => "linklabel" + d.index)
-      .style("visibility", "hidden");
+    // const linklabels = svg.selectAll(".linklabels")
+    //   .data(links)
+    //   .enter()
+    //   .append('text')
+    //   .style("pointer-events", "none")
+    //   .attr("class", "linklabels")
+    //   .attr("font-size", 8)
+    //   .attr("fill", "#00000")
+    //   .attr("id", d => "linklabel" + d.index)
+    //   .style("visibility", "hidden");
   
 
-    linklabels.append('textPath')
-      .attr('xlink:href', d => '#linkpath' + d.index)
-      .style("text-anchor", "middle")
-      .style("pointer-events", "none")
-      .attr("startOffset", "50%")
-      .text(d => d.label)
+    // linklabels.append('textPath')
+    //   .attr('xlink:href', d => '#linkpath' + d.index)
+    //   .style("text-anchor", "middle")
+    //   .style("pointer-events", "none")
+    //   .attr("startOffset", "50%")
+    //   .text(d => d.label)
 
       const node = svg.append("g")
         .attr("fill", "currentColor")
@@ -168,6 +168,7 @@ class ForcedMap extends Component {
         .attr("stroke", "white")
         .attr("stroke-width", 3);
 
+
       simulation.on("tick", () => {
         link.attr("d", linkArc).attr("class", "linkArc")
        
@@ -185,9 +186,9 @@ class ForcedMap extends Component {
           d3.selectAll('.linkArc')
           .style("display", "block")
         })
-        linkpaths.attr('d', d => 
-           `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`
-        );
+        // linkpaths.attr('d', d => 
+        //    `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`
+        // );
       });
   }
 
@@ -223,7 +224,6 @@ class ForcedMap extends Component {
 
 
   render() {
-
     return (
       <Fragment>
         <h2 className="mapTitle">{this.props.topic.label}</h2>

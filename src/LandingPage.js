@@ -42,7 +42,7 @@ class LandingPage extends Component {
     const topicLabel = e.currentTarget.value;
     console.log(conflictsList.find(conflict => conflict.label === topicLabel));
     this.setState({chosenTopic: conflictsList.find(conflict => conflict.label === topicLabel)});
-      // window.location.href = `/map/?topic=${topicLabel}`;
+      // window.history.pushState({urlPath: `/map/?topic=${topicLabel}`}, "", `/map/?topic=${topicLabel}`);
   }
 
   handleBackClick() {
