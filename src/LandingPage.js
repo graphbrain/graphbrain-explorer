@@ -74,7 +74,7 @@ class LandingPage extends Component {
                 {/* {this.state.chosenTopic && (
                 <NavLink to={`/map?topic=${this.state.chosenTopic}`} className="navLivk"> Create Map </NavLink>) } */}
               </div>
-              <button className="navlink" onClick={() => this.handlePreDefinedClick()}> Pre-defined Map </button>
+              {/* <button className="navlink" onClick={() => this.handlePreDefinedClick()}> Pre-defined Map </button> */}
             </div>
           </header>
         </div>
