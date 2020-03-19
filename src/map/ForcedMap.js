@@ -8,13 +8,22 @@ import './map.scss';
 class ForcedMap extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
-    const uniqueTypes = [];
+
+    const linkTypes = [];
     this.props.data.links.forEach(link => {
-      if (uniqueTypes.indexOf(link.type) === -1) {
-        uniqueTypes.push(link.type);
+      if (linkTypes.indexOf(link.type) === -1) {
+        linkTypes.push(link.type);
       }
     })
+
+    const factionTypes = [];
+    this.props.data.nodes.forEach(node => {
+      if (factionTypes.indexOf(node.faction) === -1) {
+        factionTypes.push(node.faction);
+      }
+    })
+
+  const nodeAndLinksTypes = linkTypes.concat(factionTypes)
 
     this.state = {
       nodes: this.props.data.nodes,
@@ -23,7 +32,8 @@ class ForcedMap extends Component {
       fullListLinks: this.props.data.links, 
       width: 600,
       height: 600,
-      types: uniqueTypes,
+      nodeAndLinksTypes,
+      linkTypes,
       linkHovered: null
     }
 
@@ -31,7 +41,7 @@ class ForcedMap extends Component {
   }
 
   drawMap() {
-    const { width, height, types, nodes, links } = this.state;
+    const { width, height, linkTypes, nodeAndLinksTypes, nodes, links } = this.state;
         
     const calcDiameter = weight => {
       const minWeight = Math.min.apply(null, nodes.map(node => node.weight));
@@ -72,7 +82,8 @@ class ForcedMap extends Component {
       `;
     }
 
-    const color = d3.scaleOrdinal(types, d3.schemeCategory10);
+    const differentColors = d3.scaleOrdinal(nodeAndLinksTypes, d3.schemeCategory10);
+
 
 
     const svg = d3.select("svg")
@@ -80,7 +91,7 @@ class ForcedMap extends Component {
     .style("font", "12px sans-serif");
 
     svg.append("defs").selectAll("marker")
-    .data(types)
+    .data(linkTypes)
     .join("marker")
       .attr("id", d => `arrow-${d}`)
       .attr("viewBox", "0 -5 10 10")
@@ -90,7 +101,7 @@ class ForcedMap extends Component {
       .attr("markerHeight", 5)
       .attr("orient", "auto")
       .append("path")
-      .attr("fill", color)
+      .attr("fill", d => differentColors(d))
       .attr("d", "M0,-5L10,0L0,5");
 
     const link = svg.append("g")
@@ -98,7 +109,7 @@ class ForcedMap extends Component {
       .selectAll("path")
       .data(links)
       .join("path")
-      .attr("stroke", d => color(d.type))
+      .attr("stroke", d => differentColors(d.type))
       .attr("stroke-width", d => calcLinkWidth(d.weight))
       .attr('marker-end',d => d.directed ? `url(#arrow-${d.type})` : '')
       .attr('class', 'linkAndArrow')
@@ -110,36 +121,6 @@ class ForcedMap extends Component {
         d3.select(`#linklabel${d.index}`).style("visibility", "hidden")
       })
      
-
-    // const linkpaths = svg.selectAll(".linkpath")
-    //   .data(links)
-    //   .enter()
-    //   .append('path')
-    //   .attr("class", "linkpath")
-    //   .attr("fill-opacity", 0)
-    //   .attr("stroke-opacity", 0)
-    //   .attr("id", d => "linkpath" + d.index)
-    //   .style("pointer-events", "none")
-    
-
-    // const linklabels = svg.selectAll(".linklabels")
-    //   .data(links)
-    //   .enter()
-    //   .append('text')
-    //   .style("pointer-events", "none")
-    //   .attr("class", "linklabels")
-    //   .attr("font-size", 8)
-    //   .attr("fill", "#00000")
-    //   .attr("id", d => "linklabel" + d.index)
-    //   .style("visibility", "hidden");
-  
-
-    // linklabels.append('textPath')
-    //   .attr('xlink:href', d => '#linkpath' + d.index)
-    //   .style("text-anchor", "middle")
-    //   .style("pointer-events", "none")
-    //   .attr("startOffset", "50%")
-    //   .text(d => d.label)
 
       const node = svg.append("g")
         .attr("fill", "currentColor")
@@ -153,7 +134,7 @@ class ForcedMap extends Component {
       node.append("circle")
         .attr("stroke", "white")
         .attr("stroke-width", 1.5)
-        .attr("fill", "red")
+        .attr("fill", d => differentColors(d.faction))
         .attr("id", d => d.id)
         .attr("class", "nodeCircle")
         .attr("r", d => calcDiameter(d.weight));
@@ -186,9 +167,6 @@ class ForcedMap extends Component {
           d3.selectAll('.linkArc')
           .style("display", "block")
         })
-        // linkpaths.attr('d', d => 
-        //    `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`
-        // );
       });
   }
 
@@ -218,7 +196,6 @@ class ForcedMap extends Component {
   }
 
   componentDidMount() {
-  const { nodes, links } = this.state;
     this.drawMap();
   }
 
