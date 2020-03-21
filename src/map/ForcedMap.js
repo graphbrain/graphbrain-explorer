@@ -141,6 +141,7 @@ class ForcedMap extends Component {
         
 
       node.append("text")
+        .attr("class", "nodeText")
         .attr("x", 8)
         .attr("y", "0.31em")
         .text(d => d.label)
