@@ -13,10 +13,11 @@ import './map.scss';
 class Maps extends Component {
   constructor(props) {
     super(props);
+    const { chosenTopic } = this.props;
 
     this.state = {
       data: null,
-      apiSearch: this.props.chosenTopic.url ? this.props.chosenTopic.url.slice(this.props.chosenTopic.url.lastIndexOf('/')) : "2"
+      apiSearch: this.props.chosenTopic.url[0] ? chosenTopic.url[0].slice(chosenTopic.url[0].lastIndexOf('/')) : "2"
     }
   }
 

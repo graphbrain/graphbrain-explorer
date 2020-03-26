@@ -1,4 +1,12 @@
 
+.contentArea {
+  display: flex;
+}
+
+.contentArea svg {
+  position: absolute;
+}
+
 .mapsArea {
   padding: 20px;
   background-color: white;

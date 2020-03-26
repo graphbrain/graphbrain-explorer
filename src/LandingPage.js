@@ -40,8 +40,9 @@ class LandingPage extends Component {
   handleInputChange(e) {
     const { conflictsList } = this.state;
     const topicLabel = e.currentTarget.value;
-    console.log(conflictsList.find(conflict => conflict.label === topicLabel));
+    // console.log(conflictsList.find(conflict => conflict.label === topicLabel));
     this.setState({chosenTopic: conflictsList.find(conflict => conflict.label === topicLabel)});
+    // console.log(conflictsList.find(conflict => conflict.label === topicLabel))
       // window.history.pushState({urlPath: `/map/?topic=${topicLabel}`}, "", `/map/?topic=${topicLabel}`);
   }
 

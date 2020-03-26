@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
+import ExtraInfo from '../components/ExtraInfo';
+
 import * as d3 from "d3";
 
 import './map.scss';
@@ -115,10 +117,11 @@ class ForcedMap extends Component {
       .attr('class', 'linkAndArrow')
       .on('mouseover', d => {
         d3.select(`#linklabel${d.index}`).style("visibility", "visible")
-        this.setState({linkHovered: d.index});
+        this.setState({linkHovered: d.info});
       })
       .on('mouseout', d => {
-        d3.select(`#linklabel${d.index}`).style("visibility", "hidden")
+        d3.select(`#linklabel${d.index}`).style("visibility", "hidden");
+        // this.setState({linkHovered: null});
       })
      
 
@@ -205,7 +208,11 @@ class ForcedMap extends Component {
     return (
       <Fragment>
         <h2 className="mapTitle">{this.props.topic.label}</h2>
+        <div className="contentArea">
+          {/* {this.state.linkHovered && <ExtraInfo info={this.state.linkHovered}/>} */}
+          <ExtraInfo info={this.state.linkHovered}/>
           <svg />
+        </div>
       </Fragment>
     )
   }
