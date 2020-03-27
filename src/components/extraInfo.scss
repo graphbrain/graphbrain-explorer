@@ -2,7 +2,12 @@
   height: 100%;
   width: 30%;
   border: 1px solid black;
-  margin-top: 20%;
+  margin-top: 15%;
   padding: 8px;
   border-radius: 4px;
+  z-index: 10;
+}
+
+.topic {
+  text-transform: capitalize;
 }

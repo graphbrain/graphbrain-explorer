@@ -37,18 +37,17 @@ class LandingPage extends Component {
     }
   }
 
-  handleInputChange(e) {
-    const { conflictsList } = this.state;
-    const topicLabel = e.currentTarget.value;
-    // console.log(conflictsList.find(conflict => conflict.label === topicLabel));
-    this.setState({chosenTopic: conflictsList.find(conflict => conflict.label === topicLabel)});
+  handleInputChange(e) { 
+    const { conflictsList } = this.state; 
+    const topicLabel = e.currentTarget.value; 
+    const chosenTopic = conflictsList.find(conflict => conflict.label === topicLabel); 
+    const topicUrl = chosenTopic.url[0].slice(chosenTopic.url[0].lastIndexOf('/'));
+    // console.log(conflictsList.find(conflict => conflict.label === topicLabel)); 
+    this.setState({chosenTopic});
     // console.log(conflictsList.find(conflict => conflict.label === topicLabel))
-      // window.history.pushState({urlPath: `/map/?topic=${topicLabel}`}, "", `/map/?topic=${topicLabel}`);
-  }
+    window.history.pushState({urlPath: topicUrl}, '', topicUrl); 
 
-  handleBackClick() {
-    this.setState({chosenTopic: null})
-  }
+}
 
   handlePreDefinedClick() {
     this.setState({chosenTopic : "2"})

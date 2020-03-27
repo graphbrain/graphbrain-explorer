@@ -13,11 +13,12 @@ import './map.scss';
 class Maps extends Component {
   constructor(props) {
     super(props);
-    const { chosenTopic } = this.props;
 
     this.state = {
       data: null,
-      apiSearch: this.props.chosenTopic.url[0] ? chosenTopic.url[0].slice(chosenTopic.url[0].lastIndexOf('/')) : "2"
+      apiSearch: window.location.search
+      // apiSearch: this.props.chosenTopic.url[0] ? chosenTopic.url[0].slice(chosenTopic.url[0].lastIndexOf('/')) : "2"
+
     }
   }
 
@@ -28,22 +29,21 @@ class Maps extends Component {
     });
   }
 
+  handleBackClick() {
+    window.location.href = '/';
+  }
+
   render() {
     const mapToRender = () => {
     if (this.state.data) {
-      switch(this.state.apiSearch) {
-        case '2': 
-        return <PredefinedMap data={this.state.data}/>;
-        default:
-          return <ForcedMap data={this.state.data} topic={this.props.chosenTopic}/>;
-      }
+      return <ForcedMap data={this.state.data} topic={this.props.chosenTopic}/>;
     } 
     else return null;  
   }
 
     return (
       <div className="mapsArea">
-        <button className="backNavLink" onClick={this.props.handleBackClick}> Go back </button>
+        <button className="backNavLink" onClick={this.handleBackClick}> Go back </button>
         {mapToRender()}
       </div>
     )

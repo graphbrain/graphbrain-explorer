@@ -11,7 +11,7 @@ export const getData = (graphType) => {
       case '2':
       return '2';
       default:
-      return `${graphType}`;
+      return `/topic${graphType}`;
     }
   }
 

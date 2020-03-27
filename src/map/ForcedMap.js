@@ -40,14 +40,20 @@ class ForcedMap extends Component {
     }
 
     this.drawMap = this.drawMap.bind(this);
+
   }
 
   drawMap() {
     const { width, height, linkTypes, nodeAndLinksTypes, nodes, links } = this.state;
         
     const calcDiameter = weight => {
-      const minWeight = Math.min.apply(null, nodes.map(node => node.weight));
-      const maxWeight = Math.max.apply(null, nodes.map(node => node.weight));
+      let minWeight = Math.min.apply(null, nodes.map(node => node.weight));
+      let maxWeight = Math.max.apply(null, nodes.map(node => node.weight));
+      if (minWeight === maxWeight) {
+        minWeight = 1;
+        maxWeight = 2;
+
+      }
       const minD = 2;
       const maxD = 15;
 
@@ -207,10 +213,10 @@ class ForcedMap extends Component {
   render() {
     return (
       <Fragment>
-        <h2 className="mapTitle">{this.props.topic.label}</h2>
+        <h2 className="mapTitle">{this.props.data.topic_label}</h2>
         <div className="contentArea">
-          {/* {this.state.linkHovered && <ExtraInfo info={this.state.linkHovered}/>} */}
-          <ExtraInfo info={this.state.linkHovered}/>
+          {this.state.linkHovered && <ExtraInfo info={this.state.linkHovered}/>}
+          {/* <ExtraInfo info={this.state.linkHovered}/> */}
           <svg />
         </div>
       </Fragment>
