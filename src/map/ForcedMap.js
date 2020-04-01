@@ -181,7 +181,7 @@ class ForcedMap extends Component {
       });
   }
 
-  drag (simulation) {
+  drag(simulation) {
     
   const dragstarted = (d) => {
       if (!d3.event.active) simulation.alphaTarget(0.3).restart();

@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import ForcedMap from './ForcedMap';
 import PredefinedMap from './PredefinedMap';
 
+import Loader from '../components/Loader';
+
 import {getData} from '../api/getData';
 
 import './map.scss';
@@ -37,7 +39,7 @@ class Maps extends Component {
     if (this.state.data) {
       return <ForcedMap data={this.state.data} topic={this.props.chosenTopic}/>;
     } 
-    else return null;  
+    else return <Loader />;  
   }
 
     return (
