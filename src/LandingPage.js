@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 import {getData} from './api/getData';
 
@@ -24,17 +24,16 @@ class LandingPage extends Component {
 
   componentDidMount() {
     getData('topics').then(data => {
-      // if(data) {
         this.setState({
           conflictsList: data.viz_blocks[0].rows
         })
-      // }
     })
+    // document.getElementById("topicsInput").focus();
   }
 
   handleSubmit() {
     if (this.state.chosenTopic) {
-      window.location.href = `/map/?topic=${this.state.chosenTopic}`;
+      // window.location.href = `/map/?topic=${this.state.chosenTopic}`;
     }
   }
 
@@ -42,12 +41,12 @@ class LandingPage extends Component {
     const { conflictsList } = this.state; 
     const topicLabel = e.currentTarget.value; 
     const chosenTopic = conflictsList.find(conflict => conflict.label === topicLabel); 
-    const topicUrl = chosenTopic.url[0].slice(chosenTopic.url[0].lastIndexOf('/'));
-    // console.log(conflictsList.find(conflict => conflict.label === topicLabel)); 
-    this.setState({chosenTopic});
-    // console.log(conflictsList.find(conflict => conflict.label === topicLabel))
-    window.history.pushState({urlPath: topicUrl}, '', topicUrl); 
-
+    console.log('topic', chosenTopic)
+    if (chosenTopic) {
+      this.setState({chosenTopic});
+      const topicUrl = chosenTopic.url[0].slice(chosenTopic.url[0].lastIndexOf('/'));
+      window.history.pushState({urlPath: topicUrl}, '', topicUrl); 
+    }
 }
 
   handlePreDefinedClick() {

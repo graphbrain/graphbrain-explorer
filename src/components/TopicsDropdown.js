@@ -15,16 +15,18 @@ const TopicsDropdown = (props) => {
 
     return (
         <div className="dropdownWrapper">
-          <p className="dropdownTitle">Please choose a topic:</p>
-          <form onSubmit={() => props.handleSubmit()}>
-            <input list="topics" name="topic" onChange={(e) => props.handleInputChange(e)}/>
+          <label htmlFor="topicsInput" className="dropdownTitle">Please choose a topic:</label>
+          {/* <form onSubmit={() => props.handleSubmit()}> */}
+            <input id="topicsInput" list="topics" name="topic" onChange={(e) => props.handleInputChange(e)} />
             <datalist id="topics">
               {renderList()}
             </datalist>
-          </form>
+            {/* <button type="submit">Submit</button> */}
+          {/* </form> */}
       </div>
     )
 }
+
 
 
 export default TopicsDropdown;
