@@ -24,10 +24,11 @@ class LandingPage extends Component {
 
   componentDidMount() {
     getData('topics').then(data => {
-      this.setState({
-        conflictsList: data.viz_blocks[0].rows
-      })
-
+      // if(data) {
+        this.setState({
+          conflictsList: data.viz_blocks[0].rows
+        })
+      // }
     })
   }
 

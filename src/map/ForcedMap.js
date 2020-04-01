@@ -96,6 +96,7 @@ class ForcedMap extends Component {
 
     const svg = d3.select("svg")
     .attr("viewBox", [-width / 2 - 50, -height / 2 + 60, width, height])
+    // .attr("viewBox", [0, 0, 500, 500])
     .style("font", "12px sans-serif");
 
     svg.append("defs").selectAll("marker")

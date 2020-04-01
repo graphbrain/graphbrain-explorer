@@ -15,9 +15,6 @@ export const getData = (graphType) => {
     }
   }
 
-  console.log(graphType);
-  console.log(findEnding());
-
   return fetch(`http://localhost:5000/api/conflicts${findEnding()}`)
   .then(response => {
     return response.json();

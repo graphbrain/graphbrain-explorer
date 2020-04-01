@@ -4,7 +4,7 @@ import React from 'react';
 
 import './extraInfo.scss';
 
-export const ExtraInfo = (props) => {
+ const ExtraInfo = (props) => {
 
   const { info } = props;
   return (

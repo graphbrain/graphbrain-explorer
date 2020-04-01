@@ -24,8 +24,7 @@ class Maps extends Component {
 
   componentDidMount() {
     getData(this.state.apiSearch).then(data => {
-      console.log(data);
-      this.setState({data: data["viz_blocks"][0]})
+        this.setState({data: data["viz_blocks"][0]})
     });
   }
 
