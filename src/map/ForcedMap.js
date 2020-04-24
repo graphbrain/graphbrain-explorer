@@ -101,7 +101,7 @@ class ForcedMap extends Component {
     .join("marker")
       .attr("id", d => `arrow-${d}`)
       .attr("viewBox", "0 -5 10 10")
-      .attr("refX", 15)
+      .attr("refX", 5)
       .attr("refY", -0.5)
       .attr("markerWidth", 5)
       .attr("markerHeight", 5)
@@ -112,10 +112,8 @@ class ForcedMap extends Component {
 
     const link = svg.append("g")
       .attr("fill", "none")
-      // .selectAll("path")
       .selectAll("line")
       .data(links)
-      // .join("path")
       .join("line")
       .attr("stroke", d => differentColors(d.type))
       .attr("stroke-width", d => calcLinkWidth(d.weight))
@@ -159,26 +157,28 @@ class ForcedMap extends Component {
         .attr("stroke", "white")
         .attr("stroke-width", 3);
 
-      const linkArc = (d) => {
-        const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
-        return `
-          M${d.source.x},${d.source.y}
-          A${r},${r} 0 0,1 ${d.target.x},${d.target.y}
-        `;
+     const calculateLinkLength = d => {
+        const x1 = d.source.x;
+        const y1 = d.source.y;
+        const x2 = d.target.x;
+        const y2 = d.target.y;
+        const angle = Math.atan2(y2 - y1, x2 - x1);
+        const targetX = x2 - Math.cos(angle) * (calcDiameter(d.target.weight) + 5);
+        const targetY = y2 - Math.sin(angle) * (calcDiameter(d.target.weight) + 5);
+        return {targetX, targetY};
       }
 
       simulation.on("tick", () => {
-        // link.attr("d", linkArc).attr("class", "linkArc")
         link
-        .attr("class", "linkArc")
+        .attr("class", "link")
         .attr("x1", d => d.source.x)
         .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
+        .attr("x2", d => calculateLinkLength(d).targetX)
+        .attr("y2", d => calculateLinkLength(d).targetY);
        
         node.attr("transform", d => `translate(${d.x},${d.y})`)
         .on("mouseover", d => {
-          d3.selectAll('.linkArc')
+          d3.selectAll('.link')
           .style("display", l => {
             if ((l.source.id !== d.id) && (l.target.id !== d.id)) {
               return "none"
@@ -187,7 +187,7 @@ class ForcedMap extends Component {
           })
         })
         .on("mouseout", d => {
-          d3.selectAll('.linkArc')
+          d3.selectAll('.link')
           .style("display", "block")
         })
       });

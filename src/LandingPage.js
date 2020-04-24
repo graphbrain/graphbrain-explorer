@@ -61,11 +61,11 @@ class LandingPage extends Component {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <p className="mainText">
+            <div className="mainText">
             <p>Graphbrain is an Artificial Intelligence open-source software library and scientific research tool.</p>
             <p>Its aim is to facilitate automated meaning extraction and text understanding, as well as the exploration and inference of knowledge.</p>
             <p>This website is both a demonstration and an application of Graphbrain. It allows you to experience the news in a different way: instead of following the timelines of events as they unfold, it makes it possible to navigate the implicit networks of meaning that traverse temporal spans and publications. We invite you to explore how the various actors, topics, places and events are interconnected through relations of cooperation, common interest and conflict, through the various viewpoints present in the media.</p>
-            </p>
+            </div>
             <div className="buttonArea">
               <div className="dropdownArea">
                 <TopicsDropdown 
