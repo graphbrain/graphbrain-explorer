@@ -59,7 +59,6 @@ class ForcedMap extends Component {
 
       const newWeight = (weight - minWeight) / (maxWeight - minWeight);
       const d = minD + newWeight * ( maxD - minD);
-
       return d;
     }
 
@@ -67,7 +66,7 @@ class ForcedMap extends Component {
       const minWeight = Math.min.apply(null, links.map(link => link.weight));
       const maxWeight = Math.max.apply(null, links.map(link => link.weight));
       const minW = 1;
-      const maxW = 3;
+      const maxW = 2.5;
 
       const newWeight = (weight - minWeight) / (maxWeight - minWeight);
       const w = minW + newWeight * ( maxW - minW);
@@ -82,13 +81,6 @@ class ForcedMap extends Component {
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
-    const linkArc = (d) => {
-      const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
-      return `
-        M${d.source.x},${d.source.y}
-        A${r},${r} 0 0,1 ${d.target.x},${d.target.y}
-      `;
-    }
 
     const differentColors = d3.scaleOrdinal(nodeAndLinksTypes, d3.schemeCategory10);
 
@@ -96,11 +88,12 @@ class ForcedMap extends Component {
 
     const svg = d3.select("svg")
     .attr("viewBox", [-width / 2 - 50, -height / 2 + 60, width, height])
-    .call(d3.zoom().on("zoom", function () {
+    .call(d3.zoom().on("zoom", () => {
       svg.attr("transform", d3.event.transform)
     }))
-  .append("g")
-    .style("font", "12px sans-serif")
+    
+    .append("g")
+      .style("font", "12px sans-serif")
    
 
     svg.append("defs").selectAll("marker")
@@ -164,6 +157,13 @@ class ForcedMap extends Component {
         .attr("stroke", "white")
         .attr("stroke-width", 3);
 
+      const linkArc = (d) => {
+        const r = Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y);
+        return `
+          M${d.source.x},${d.source.y}
+          A${r},${r} 0 0,1 ${d.target.x},${d.target.y}
+        `;
+      }
 
       simulation.on("tick", () => {
         link.attr("d", linkArc).attr("class", "linkArc")
@@ -221,7 +221,6 @@ class ForcedMap extends Component {
         <h2 className="mapTitle">{this.props.data.topic_label}</h2>
         <div className="contentArea">
           {this.state.linkHovered && <ExtraInfo info={this.state.linkHovered}/>}
-          {/* <ExtraInfo info={this.state.linkHovered}/> */}
           <svg />
         </div>
       </Fragment>

@@ -4,7 +4,7 @@
 }
 
 .App-logo {
-  height: 30vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -58,11 +58,8 @@
   
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mainText {
+  width: 40%;
+  text-align: left;
+  line-height: 1.4;
 }
