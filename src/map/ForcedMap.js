@@ -93,7 +93,7 @@ class ForcedMap extends Component {
     }))
     
     .append("g")
-      .style("font", "12px sans-serif")
+      .style("font", "10px sans-serif")
    
 
     svg.append("defs").selectAll("marker")
