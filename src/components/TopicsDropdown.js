@@ -15,7 +15,7 @@ const TopicsDropdown = (props) => {
 
     return (
         <div className="dropdownWrapper">
-          <label htmlFor="topicsInput" className="dropdownTitle">Please choose a topic:</label>
+          <label htmlFor="topicsInput" className="dropdownTitle">Please choose a topic</label>
           {/* <form onSubmit={() => props.handleSubmit()}> */}
             <input id="topicsInput" list="topics" name="topic" onChange={(e) => props.handleInputChange(e)} />
             <datalist id="topics">

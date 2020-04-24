@@ -119,12 +119,15 @@ class ForcedMap extends Component {
       .attr("stroke-width", d => calcLinkWidth(d.weight))
       .attr('marker-end',d => d.directed ? `url(#arrow-${d.type})` : '')
       .attr('class', 'linkAndArrow')
+      .attr("id", d => `link-${d.index}`)
       .on('mouseover', d => {
-        d3.select(`#linklabel${d.index}`).style("visibility", "visible")
-        this.setState({linkHovered: d.info});
+        const reversed = links.find(link => d.source.id === link.target.id && d.target.id === link.source.id);
+        const linkHovered = reversed ? [d, reversed] : [d];
+        this.setState({
+          linkHovered
+        });
       })
       .on('mouseout', d => {
-        d3.select(`#linklabel${d.index}`).style("visibility", "hidden");
         // this.setState({linkHovered: null});
       })
      
@@ -228,7 +231,7 @@ class ForcedMap extends Component {
       <Fragment>
         <h2 className="mapTitle">{this.props.data.topic_label}</h2>
         <div className="contentArea">
-          {this.state.linkHovered && <ExtraInfo info={this.state.linkHovered}/>}
+          {this.state.linkHovered && <ExtraInfo linkArr={this.state.linkHovered}/>}
           <svg />
         </div>
       </Fragment>

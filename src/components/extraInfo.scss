@@ -2,14 +2,20 @@
   height: 100%;
   width: 30%;
   border: 1px solid black;
-  margin-top: 7%;
+  margin-top: 4%;
   padding: 8px;
   border-radius: 4px;
   z-index: 10;
   max-height: 100vh;
   overflow: auto;
+  background-color: #ADD8E6;
 }
 
 .topic {
   text-transform: capitalize;
+}
+
+.linkTitle {
+  text-transform: capitalize;
+  text-align: center;
 }

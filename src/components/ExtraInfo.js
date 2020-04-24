@@ -1,36 +1,47 @@
 
 
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import './extraInfo.scss';
 
  const ExtraInfo = (props) => {
 
-  const { info } = props;
+  const { linkArr } = props;
   return (
     <div className="infoWrapper">
-      {info && info.headlines.length > 0 && (
-        <div className="headlineArea">
-          <h3>Headlines</h3>
-          {info.headlines.map(headline => (
-            <p className="headline" key={headline}>{headline}</p>
-          ))}
-        </div>
-      )}
-      {info && info.other_topics.length > 0 && (
-        <div className="headlineArea">
-          <h3>Related maps</h3>
-          {info.other_topics.map(topic => (
-           <p> <a 
-           href={topic.url.slice(topic.url.lastIndexOf('/'))} 
-           className="topic" target="_blank" 
-           rel="noopener noreferrer"
-           key={topic.url}>
-             {topic.label}
-           </a></p>
-          ))}
-        </div>
-      )}
+      {linkArr.map(link => (
+      <Fragment key={link.index}>
+        <h3 className="linkTitle">{link.source.label} -> {link.target.label}</h3>
+        {link.info && link.info.headlines.length && (
+          <div className="headlineArea">
+            <h4>Headlines</h4>
+            {link.info.headlines.map(headline => (
+              <p className="headline" key={headline}>{headline}</p>
+            ))}
+          </div>
+        )}
+        {link.info && !link.info.headlines.length && (
+            <div className="headlineArea">
+              <h4>Headlines</h4>
+                <p className="headline">No relevant headlines</p>
+          </div>
+        )}
+        {link.info && link.info.other_topics.length > 0 && (
+          <div className="headlineArea">
+            <h4>Related maps</h4>
+            {link.info.other_topics.map(topic => (
+            <p key={topic.url}> <a 
+            href={topic.url.slice(topic.url.lastIndexOf('/'))} 
+            className="topic" target="_blank" 
+            rel="noopener noreferrer"
+            key={topic.url}>
+              {topic.label}
+            </a></p>
+            ))}
+          </div>
+        )}
+      </Fragment>
+      ))}
     </div>
   )
 }
