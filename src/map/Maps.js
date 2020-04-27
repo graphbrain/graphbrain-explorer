@@ -1,10 +1,7 @@
 
 import React, { Component } from 'react';
 
-import { NavLink } from 'react-router-dom';
-
 import ForcedMap from './ForcedMap';
-import PredefinedMap from './PredefinedMap';
 
 import Loader from '../components/Loader';
 
@@ -15,7 +12,8 @@ import './map.scss';
 class Maps extends Component {
   constructor(props) {
     super(props);
-
+  
+    console.log(window.location.search);
     this.state = {
       data: null,
       apiSearch: window.location.search
