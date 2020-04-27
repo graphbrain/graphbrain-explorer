@@ -142,8 +142,8 @@ class ForcedMap extends Component {
         .call(this.drag(simulation));
 
       node.append("circle")
-        .attr("stroke", "white")
-        .attr("stroke-width", 1.5)
+        // .attr("stroke", "white")
+        // .attr("stroke-width", 1.5)
         .attr("fill", d => differentColors(d.faction))
         .attr("id", d => d.id)
         .attr("class", "nodeCircle")
@@ -157,8 +157,8 @@ class ForcedMap extends Component {
         .text(d => d.label)
         .clone(true).lower()
         .attr("fill", "none")
-        .attr("stroke", "white")
-        .attr("stroke-width", 3);
+        // .attr("stroke", "white")
+        // .attr("stroke-width", 3);
 
      const calculateLinkLength = d => {
         const x1 = d.source.x;
@@ -229,7 +229,22 @@ class ForcedMap extends Component {
   render() {
     return (
       <Fragment>
-        <h2 className="mapTitle">{this.props.data.topic_label}</h2>
+        {/* <div className="titleAndinfo"> */}
+          <h2 className="mapTitle">
+            {this.props.data.topic_label.length === 2 ? 
+              this.props.data.topic_label.toUpperCase() : 
+              this.props.data.topic_label}
+          </h2>
+          {/* <div className="usefulInfo">
+            <h3>Useful information</h3>
+            <ul>
+              <li>Hovering on a link (line between 2 nodes) will give you information about it. </li>
+              <li>Hovering on a node (circle) will show you only the related links.</li>
+              <li>You can zoom in and out using the scroll functionality of the mouse/mouse pad. </li>
+              <li>You can drag the graph around by clicking on a node.  </li>
+            </ul>
+          </div> */}
+        {/* </div> */}
         <div className="contentArea">
           {this.state.linkHovered && <ExtraInfo linkArr={this.state.linkHovered}/>}
           <svg />

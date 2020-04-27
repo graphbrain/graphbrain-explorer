@@ -1,6 +1,23 @@
-.App {
+body {
+  background-color: #E0E0E0;
+  color: #282c34;
+}
+
+.landingWrapper {
+  /* text-align: center; */
+  min-height: 100vh;
+  display: flex;
+  color: #282c34;
+}
+
+.aboutArea {
+  width: 35%;
+  background-color: #D0D0D0;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 30px;
+  box-sizing: border-box;
   text-align: center;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .App-logo {
@@ -8,58 +25,43 @@
   pointer-events: none;
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.topicsArea {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* font-size: calc(10px + 2vmin); */
-  color: white;
+  background-color: #E0E0E0;
+  width: 100%;
+  text-transform: capitalize;
 }
 
-.App-link {
-  color: #61dafb;
+.topicsTitle {
+  text-align: center;
+  color: #0086b3;
 }
 
-.buttonArea {
-  display: flex;
-  align-items: center;
-}
-
-.dropdownArea {
+.topicsList {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  max-height: 600px;
+  padding: 30px;
+  overflow: auto;
 }
 
-.navlink {
-  height: 30px;
-  width: 130px;
-  background-color: #e7e7e7;
+
+.navLink {
   color: #282c34;
   font-size: 14px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
+  flex: 1;
+  margin-bottom: 6px;
 }
 
-.mapsArea .navlink {
+/* .mapsArea .navlink {
   background-color: #282c34;
   
-}
+} */
 
 .mainText {
-  width: 40%;
   text-align: left;
-  line-height: 1.4;
+  line-height: 1.6;
 }
