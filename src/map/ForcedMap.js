@@ -3,8 +3,9 @@ import React, { Component, Fragment } from 'react';
 import ExtraInfo from '../components/ExtraInfo';
 import HelpMenu from '../components/HelpMenu';
 
-import closeIcon from '../assets/close_icon.svg';
+import closeHelpIcon from '../assets/close_help_icon.svg';
 import helpIcon from '../assets/help_icon.svg';
+
 
 import * as d3 from "d3";
 
@@ -45,6 +46,7 @@ class ForcedMap extends Component {
     }
 
     this.drawMap = this.drawMap.bind(this);
+    this.closeExtraInfo = this.closeExtraInfo.bind(this);
 
   }
 
@@ -239,22 +241,30 @@ class ForcedMap extends Component {
     })
   }
 
+  closeExtraInfo () {
+    console.log('hey');
+    this.setState({linkHovered: null});
+  }
+
   render() {
     return (
       <Fragment>
-        {/* <div className="titleAndinfo"> */}
           <h2 className="mapTitle">
             {this.props.data.topic_label.length === 2 ? 
               this.props.data.topic_label.toUpperCase() : 
               this.props.data.topic_label}
           </h2>
         <div className="contentArea">
-          {this.state.linkHovered && <ExtraInfo linkArr={this.state.linkHovered}/>}
+          {this.state.linkHovered && 
+            <ExtraInfo 
+              linkArr={this.state.linkHovered}  
+              closeExtraInfo={this.closeExtraInfo}
+            />}
           <svg />
         </div>
         {this.state.helpMenuOpen && <HelpMenu />}
         <div className="helpButton">
-          <img src={this.state.helpMenuOpen ? closeIcon : helpIcon} alt="help" onClick={() => this.toggleHelpMenu()}/> 
+          <img src={this.state.helpMenuOpen ? closeHelpIcon : helpIcon} alt="help" onClick={() => this.toggleHelpMenu()}/> 
         </div>
       </Fragment>
     )

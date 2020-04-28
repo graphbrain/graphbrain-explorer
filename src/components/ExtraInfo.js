@@ -2,13 +2,16 @@
 
 import React, { Fragment } from 'react';
 
+import closeInfoIcon from '../assets/close_info_icon.svg';
+
 import './extraInfo.scss';
 
  const ExtraInfo = (props) => {
 
-  const { linkArr } = props;
+  const { linkArr} = props;
   return (
     <div className="infoWrapper">
+      <img src={closeInfoIcon} alt='close' className="closeIcon" onClick={props.closeExtraInfo}/>
       {linkArr.map(link => (
       <Fragment key={link.index}>
         <h3 className="linkTitle">{link.source.label} &rarr; {link.target.label}</h3>
