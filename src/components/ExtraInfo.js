@@ -11,7 +11,7 @@ import './extraInfo.scss';
     <div className="infoWrapper">
       {linkArr.map(link => (
       <Fragment key={link.index}>
-        <h3 className="linkTitle">{link.source.label} -> {link.target.label}</h3>
+        <h3 className="linkTitle">{link.source.label} &rarr; {link.target.label}</h3>
         {link.info && link.info.headlines.length && (
           <div className="headlineArea">
             <h4>Headlines</h4>
