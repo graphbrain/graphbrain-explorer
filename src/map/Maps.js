@@ -5,6 +5,8 @@ import ForcedMap from './ForcedMap';
 
 import Loader from '../components/Loader';
 
+import backIcon from '../assets/back_icon.svg';
+
 import {getData} from '../api/getData';
 
 import './map.scss';
@@ -42,7 +44,7 @@ class Maps extends Component {
 
     return (
       <div className="mapsArea">
-        <button className="backNavLink" onClick={this.handleBackClick}> Go back </button>
+        <img src={backIcon} alt="back" className="backIcon" onClick={this.handleBackClick}/> 
         {mapToRender()}
       </div>
     )

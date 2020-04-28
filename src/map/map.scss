@@ -68,7 +68,7 @@
 }
 
 .helpButton {
-  background-color: #0086b3;
+  background-color: #1f77b4;
   border-radius: 50%;
   height: 35px;
   width: 35px;
@@ -106,4 +106,13 @@
 .closeHelpIcon {
   height: 15px;
   width: 15px;
+}
+
+.backIcon {
+  position: absolute;
+  height: 40px;
+  margin: 10px 0 4px 5px;
+  fill: #1f77b4;
+  stroke: #1f77b4;
+  cursor: pointer;
 }
