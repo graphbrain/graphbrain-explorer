@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
 
 import ExtraInfo from '../components/ExtraInfo';
+import HelpMenu from '../components/HelpMenu';
+
+import closeIcon from '../assets/close_icon.svg';
+import helpIcon from '../assets/help_icon.svg';
 
 import * as d3 from "d3";
 
@@ -36,7 +40,8 @@ class ForcedMap extends Component {
       height: 600,
       nodeAndLinksTypes,
       linkTypes,
-      linkHovered: null
+      linkHovered: null,
+      helpMenuOpen: false
     }
 
     this.drawMap = this.drawMap.bind(this);
@@ -225,6 +230,14 @@ class ForcedMap extends Component {
     this.drawMap();
   }
 
+  toggleHelpMenu() {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        helpMenuOpen: !prevState.helpMenuOpen
+      }
+    })
+  }
 
   render() {
     return (
@@ -235,19 +248,13 @@ class ForcedMap extends Component {
               this.props.data.topic_label.toUpperCase() : 
               this.props.data.topic_label}
           </h2>
-          {/* <div className="usefulInfo">
-            <h3>Useful information</h3>
-            <ul>
-              <li>Hovering on a link (line between 2 nodes) will give you information about it. </li>
-              <li>Hovering on a node (circle) will show you only the related links.</li>
-              <li>You can zoom in and out using the scroll functionality of the mouse/mouse pad. </li>
-              <li>You can drag the graph around by clicking on a node.  </li>
-            </ul>
-          </div> */}
-        {/* </div> */}
         <div className="contentArea">
           {this.state.linkHovered && <ExtraInfo linkArr={this.state.linkHovered}/>}
           <svg />
+        </div>
+        {this.state.helpMenuOpen && <HelpMenu />}
+        <div className="helpButton">
+          <img src={this.state.helpMenuOpen ? closeIcon : helpIcon} alt="help" onClick={() => this.toggleHelpMenu()}/> 
         </div>
       </Fragment>
     )

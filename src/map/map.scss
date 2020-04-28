@@ -66,3 +66,39 @@
 .nodeText {
   text-transform: capitalize;
 }
+
+.helpButton {
+  background-color: #0086b3;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.helpButton img {
+  height: 20px;
+  width: 20px;
+}
+
+.helpMenuWrapper {
+  position: absolute;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  width: 310px;
+  padding: 10px 10px 50px 0px;
+  right: 20px;
+  bottom: 20px;
+  line-height: 1.4;
+}
+
+.helpMenuWrapper li {
+  margin-bottom: 5px;
+}

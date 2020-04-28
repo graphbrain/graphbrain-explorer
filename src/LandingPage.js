@@ -10,7 +10,7 @@ import Maps from './map/Maps';
 
 import logo from './assets/graphbrain-logo.gif';
 
-import './App.css';
+import './App.scss';
 
 class LandingPage extends Component {
   constructor(props) {
