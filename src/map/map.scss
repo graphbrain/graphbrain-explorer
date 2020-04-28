@@ -83,11 +83,6 @@
   z-index: 10;
 }
 
-.helpButton img {
-  height: 20px;
-  width: 20px;
-}
-
 .helpMenuWrapper {
   position: absolute;
   background-color: #FFFFFF;
@@ -103,3 +98,12 @@
   margin-bottom: 5px;
 }
 
+.helpIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.closeHelpIcon {
+  height: 15px;
+  width: 15px;
+}

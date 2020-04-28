@@ -264,7 +264,10 @@ class ForcedMap extends Component {
         </div>
         {this.state.helpMenuOpen && <HelpMenu />}
         <div className="helpButton">
-          <img src={this.state.helpMenuOpen ? closeHelpIcon : helpIcon} alt="help" onClick={() => this.toggleHelpMenu()}/> 
+          <img 
+          src={this.state.helpMenuOpen ? closeHelpIcon : helpIcon} 
+          className={this.state.helpMenuOpen ? "closeHelpIcon" : "helpIcon"}
+          alt="help" onClick={() => this.toggleHelpMenu()}/> 
         </div>
       </Fragment>
     )
