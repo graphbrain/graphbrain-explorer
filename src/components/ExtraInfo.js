@@ -8,7 +8,8 @@ import './extraInfo.scss';
 
  const ExtraInfo = (props) => {
 
-  const { linkArr} = props;
+  const { linkArr, topicLabel} = props;
+  console.log(topicLabel);
   return (
     <div className="infoWrapper">
       <img src={closeInfoIcon} alt='close' className="closeIcon" onClick={props.closeExtraInfo}/>

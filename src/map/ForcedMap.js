@@ -242,7 +242,6 @@ class ForcedMap extends Component {
   }
 
   closeExtraInfo () {
-    console.log('hey');
     this.setState({linkHovered: null});
   }
 
@@ -254,6 +253,7 @@ class ForcedMap extends Component {
             <ExtraInfo 
               linkArr={this.state.linkHovered}  
               closeExtraInfo={this.closeExtraInfo}
+              topicLabel={this.props.data.topic_label}
             />}
           <svg />
         </div>
