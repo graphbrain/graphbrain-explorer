@@ -35,16 +35,26 @@ class Maps extends Component {
   }
 
   render() {
+    const { data } = this.state;
     const mapToRender = () => {
     if (this.state.data) {
-      return <ForcedMap data={this.state.data} topic={this.props.chosenTopic}/>;
+      return <ForcedMap data={data}/>;
     } 
     else return <Loader />;  
   }
 
     return (
       <div className="mapsArea">
-        <img src={backIcon} alt="back" className="backIcon" onClick={this.handleBackClick}/> 
+       {data && (
+        <div className="mapHeader">
+          <img src={backIcon} alt="back" className="backIcon" onClick={this.handleBackClick}/>
+          <h2 className="mapTitle">
+              {data.topic_label.length === 2 ? 
+                data.topic_label.toUpperCase() : 
+                data.topic_label}
+          </h2> 
+        </div>
+        )}
         {mapToRender()}
       </div>
     )

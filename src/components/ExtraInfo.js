@@ -12,7 +12,7 @@ import './extraInfo.scss';
   return (
     <div className="infoWrapper">
       <img src={closeInfoIcon} alt='close' className="closeIcon" onClick={props.closeExtraInfo}/>
-      {linkArr.map(link => (
+      {linkArr.map((link, index) => (
       <Fragment key={link.index}>
         <h3 className="linkTitle">{link.source.label} &rarr; {link.target.label}</h3>
         {link.info && link.info.headlines.length && (
@@ -43,6 +43,7 @@ import './extraInfo.scss';
             ))}
           </div>
         )}
+        {linkArr.length === 2 && index === 0 && <hr/>}
       </Fragment>
       ))}
     </div>

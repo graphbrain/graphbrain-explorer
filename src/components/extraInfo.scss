@@ -1,14 +1,15 @@
 .infoWrapper {
   height: 100%;
   width: 30%;
-  margin-top: 4%;
-  padding: 8px;
+  margin-top: 7%;
+  padding: 12px;
   border-radius: 4px;
   z-index: 10;
   max-height: 100vh;
   overflow: auto;
   background-color: #FFFFFF;
   margin-left: 10px;
+  z-index: 2;
 }
 
 .topic {
@@ -24,4 +25,8 @@
   height: 20px;
   float: right;
   cursor: pointer;
+}
+
+hr {
+  margin-top: 30px;
 }

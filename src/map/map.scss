@@ -27,37 +27,45 @@
   align-content: center;
 }
 
-.backNavLink {
-  position: absolute;
-  height: 50px;
-  width: 100px;
-  background-color: #282c34;
-  color: #282c34;
-  font-size: 14px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 4px 0 4px 5px;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-}
-
 .colorWhite {
   fill: white;
 }
 
-.mapTitle {
-  text-align: center;
-  font-size: 25px;
-  text-transform: capitalize;
-  margin: 0;
-  height: 60px;
-  box-sizing: border-box;
-  padding-top: 10px;
-  background-color: #D0D0D0;
+.mapHeader {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+
+  .backNavLink {
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    background-color: #282c34;
+    color: #282c34;
+    font-size: 14px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 0 4px 5px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .mapTitle {
+    text-align: center;
+    font-size: 25px;
+    text-transform: capitalize;
+    margin: 0;
+    height: 60px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    background-color: #D0D0D0;
+  }
 }
+
+
 
 .topicOption {
   text-transform: capitalize;
@@ -81,6 +89,7 @@
   cursor: pointer;
   box-sizing: border-box;
   z-index: 10;
+  position: fixed;
 }
 
 .helpMenuWrapper {

@@ -249,11 +249,6 @@ class ForcedMap extends Component {
   render() {
     return (
       <Fragment>
-          <h2 className="mapTitle">
-            {this.props.data.topic_label.length === 2 ? 
-              this.props.data.topic_label.toUpperCase() : 
-              this.props.data.topic_label}
-          </h2>
         <div className="contentArea">
           {this.state.linkHovered && 
             <ExtraInfo 
