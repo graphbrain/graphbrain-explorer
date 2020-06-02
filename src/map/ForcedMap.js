@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState, useEffect, useRef } from 'react';
 
 import ExtraInfo from '../components/ExtraInfo';
 import HelpMenu from '../components/HelpMenu';
@@ -12,47 +12,35 @@ import * as d3 from "d3";
 import './map.scss';
 
 
-class ForcedMap extends Component {
-  constructor(props) {
-    super(props);
+const ForcedMap = ({data}) => {
 
-    const linkTypes = [];
-    this.props.data.links.forEach(link => {
-      if (linkTypes.indexOf(link.type) === -1) {
-        linkTypes.push(link.type);
-      }
-    })
+  const [linkHovered, setLinkHovered] = useState(null);
+  const [helpMenuOpen, toggleHelpMenu] = useState(false);
+  const d3Container = useRef(null);
 
-    const factionTypes = [];
-    this.props.data.nodes.forEach(node => {
-      if (factionTypes.indexOf(node.faction) === -1) {
-        factionTypes.push(node.faction);
-      }
-    })
+  
+  const linkTypes = [];
+  data.links.forEach(link => {
+    if (linkTypes.indexOf(link.type) === -1) {
+      linkTypes.push(link.type);
+    }
+  })
+
+  const factionTypes = [];
+  data.nodes.forEach(node => {
+    if (factionTypes.indexOf(node.faction) === -1) {
+      factionTypes.push(node.faction);
+    }
+  })
 
   const nodeAndLinksTypes = linkTypes.concat(factionTypes)
+  const nodes = data.nodes;
+  const links = data.links;
+  const width = 600;
+  const height = 600;
 
-    this.state = {
-      nodes: this.props.data.nodes,
-      links: this.props.data.links,
-      fullListNodes: this.props.data.nodes,
-      fullListLinks: this.props.data.links, 
-      width: 600,
-      height: 600,
-      nodeAndLinksTypes,
-      linkTypes,
-      linkHovered: null,
-      helpMenuOpen: false
-    }
 
-    this.drawMap = this.drawMap.bind(this);
-    this.closeExtraInfo = this.closeExtraInfo.bind(this);
-
-  }
-
-  drawMap() {
-    const { width, height, linkTypes, nodeAndLinksTypes, nodes, links } = this.state;
-        
+  const drawMap = () => {
     const calcDiameter = weight => {
       let minWeight = Math.min.apply(null, nodes.map(node => node.weight));
       let maxWeight = Math.max.apply(null, nodes.map(node => node.weight));
@@ -81,7 +69,7 @@ class ForcedMap extends Component {
       return w;
     }
 
-    
+  
     const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id))
       .force("charge", d3.forceManyBody().strength(-400))
@@ -93,15 +81,15 @@ class ForcedMap extends Component {
 
 
 
-    const svg = d3.select("svg")
+    const svg = d3.select(d3Container.current)
     .attr("viewBox", [-width / 2 - 50, -height / 2 + 60, width, height])
     .call(d3.zoom().on("zoom", () => {
       svg.attr("transform", d3.event.transform)
     }))
-    
+  
     .append("g")
       .style("font", "10px sans-serif")
-   
+ 
 
     svg.append("defs").selectAll("marker")
     .data(linkTypes)
@@ -129,15 +117,12 @@ class ForcedMap extends Component {
       .attr("id", d => `link-${d.index}`)
       .on('mouseover', d => {
         const reversed = links.find(link => d.source.id === link.target.id && d.target.id === link.source.id);
-        const linkHovered = reversed ? [d, reversed] : [d];
-        this.setState({
-          linkHovered
-        });
+        const checkLinkHovered = reversed ? [d, reversed] : [d];
+        setLinkHovered(checkLinkHovered);
       })
       .on('mouseout', d => {
-        // this.setState({linkHovered: null});
       })
-     
+   
 
       const node = svg.append("g")
         .attr("fill", "currentColor")
@@ -146,7 +131,7 @@ class ForcedMap extends Component {
         .selectAll("g")
         .data(nodes)
         .join("g") 
-        .call(this.drag(simulation));
+        .call(drag(simulation));
 
       node.append("circle")
         // .attr("stroke", "white")
@@ -155,7 +140,7 @@ class ForcedMap extends Component {
         .attr("id", d => d.id)
         .attr("class", "nodeCircle")
         .attr("r", d => calcDiameter(d.weight));
-        
+      
 
       node.append("text")
         .attr("class", "nodeText")
@@ -167,7 +152,7 @@ class ForcedMap extends Component {
         // .attr("stroke", "white")
         // .attr("stroke-width", 3);
 
-     const calculateLinkLength = d => {
+    const calculateLinkLength = d => {
         const x1 = d.source.x;
         const y1 = d.source.y;
         const x2 = d.target.x;
@@ -185,7 +170,7 @@ class ForcedMap extends Component {
         .attr("y1", d => d.source.y)
         .attr("x2", d => calculateLinkLength(d).targetX)
         .attr("y2", d => calculateLinkLength(d).targetY);
-       
+     
         node.attr("transform", d => `translate(${d.x},${d.y})`)
         .on("mouseover", d => {
           d3.selectAll('.link')
@@ -201,72 +186,57 @@ class ForcedMap extends Component {
           .style("display", "block")
         })
       });
+   
   }
 
-  drag(simulation) {
+  const drag = (simulation) => {
     
-  const dragstarted = (d) => {
-      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-      d.fx = d.x;
-      d.fy = d.y;
-    }
-  
-  const dragged = (d) => {
-      d.fx = d3.event.x;
-      d.fy = d3.event.y;
-    }
-  
-  const dragended = (d) => {
-      if (!d3.event.active) simulation.alphaTarget(0);
-      d.fx = null;
-      d.fy = null;
-    }
-  
-    return d3.drag()
-        .on("start", dragstarted)
-        .on("drag", dragged)
-        .on("end", dragended);
-  }
-
-  componentDidMount() {
-    this.drawMap();
-  }
-
-  toggleHelpMenu() {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        helpMenuOpen: !prevState.helpMenuOpen
+    const dragstarted = (d) => {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
       }
-    })
+    
+    const dragged = (d) => {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+      }
+    
+    const dragended = (d) => {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
+    
+      return d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended);
   }
+  
+    useEffect(drawMap, [])
 
-  closeExtraInfo () {
-    this.setState({linkHovered: null});
-  }
+      return (
+        <Fragment>
+          <div className="contentArea">
+            {linkHovered && 
+              <ExtraInfo 
+                linkArr={linkHovered}  
+                closeExtraInfo={() => setLinkHovered(false)}
+                topicLabel={data.topic_label}
+              />}
+            <svg ref={d3Container}/>
+          </div>
+          {helpMenuOpen && <HelpMenu />}
+          <div className="helpButton">
+            <img 
+            src={helpMenuOpen ? closeHelpIcon : helpIcon} 
+            className={helpMenuOpen ? "closeHelpIcon" : "helpIcon"}
+            alt="help" onClick={() => toggleHelpMenu(helpMenuOpen => !helpMenuOpen)}/> 
+          </div>
+        </Fragment>
+      )
+}
 
-  render() {
-    return (
-      <Fragment>
-        <div className="contentArea">
-          {this.state.linkHovered && 
-            <ExtraInfo 
-              linkArr={this.state.linkHovered}  
-              closeExtraInfo={this.closeExtraInfo}
-              topicLabel={this.props.data.topic_label}
-            />}
-          <svg />
-        </div>
-        {this.state.helpMenuOpen && <HelpMenu />}
-        <div className="helpButton">
-          <img 
-          src={this.state.helpMenuOpen ? closeHelpIcon : helpIcon} 
-          className={this.state.helpMenuOpen ? "closeHelpIcon" : "helpIcon"}
-          alt="help" onClick={() => this.toggleHelpMenu()}/> 
-        </div>
-      </Fragment>
-    )
-  }
-} 
 
 export default ForcedMap;
