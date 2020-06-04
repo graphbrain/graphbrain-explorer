@@ -1,12 +1,13 @@
-
-
 import React, { Fragment } from 'react';
 
 import closeInfoIcon from '../assets/close_info_icon.svg';
 
 import './extraInfo.scss';
 
- const ExtraInfo = ({linkArr, closeExtraInfo}) => {
+import { Link } from './map/Maps';
+ 
+
+ const ExtraInfo: React.FC<{linkArr: Link[], closeExtraInfo: () => void}> = ({linkArr, closeExtraInfo}) => {
 
   return (
     <div className="infoWrapper">
@@ -32,11 +33,11 @@ import './extraInfo.scss';
           <div className="headlineArea">
             <h4>Related maps</h4>
             {link.info.other_topics.map(topic => (
-            <p key={topic.url}> <a 
-            href={topic.url.slice(topic.url.lastIndexOf('/'))} 
+            <p key={topic.url[0]}> <a 
+            href={topic.url[0].slice(topic.url.lastIndexOf('/'))} 
             className="topic" target="_blank" 
             rel="noopener noreferrer"
-            key={topic.url}>
+            key={topic.url[0]}>
               {topic.label}
             </a></p>
             ))}

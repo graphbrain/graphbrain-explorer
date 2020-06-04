@@ -1,9 +1,9 @@
 import React from 'react';
 
-import '../map/map.scss';
+import './map/map.scss';
 
 
-const HelpMenu = () => (
+const HelpMenu: React.FC = () => (
   <div className="helpMenuWrapper">
     <ul>
       <li>Hovering on a link (line between two nodes) will give you more information about it. </li>

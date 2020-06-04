@@ -1,35 +1,39 @@
 import React, { Fragment, useState, useEffect } from 'react';
-
 import { NavLink } from 'react-router-dom';
 
-import {getData} from './api/getData';
-
-// import TopicsDropdown from './components/TopicsDropdown';
+import {getData} from '../api/getData';
 
 import Maps from './map/Maps';
 
-import logo from './assets/graphbrain-logo.gif';
+import logo from '../assets/graphbrain-logo.gif';
 
-import './App.scss';
+import '../App.scss';
 
+export type Topic = {
+  id: string,
+  label: string,
+  url: Array<string>,
+  weight: number
+}
 
-const LandingPage = () => {
+const LandingPage: React.FC<{}> = () => {
 
-  const [chosenTopic, setChosenTopic] = useState(null);
-  const [topicsList, setTopicsList] = useState([]);
+  const [chosenTopic, setChosenTopic] = useState<Topic | null>(null);
+  const [topicsList, setTopicsList] = useState<Array<Topic>>([]);
 
   useEffect(() => {
     getData('topics').then(data => {
-      const filteredTopics = data.viz_blocks[0].rows.filter(topic => 
+      const filteredTopics = data.viz_blocks[0].rows.filter((topic: Topic) => 
         topic.label.split(" ").length < 5 && topic.label.length !== 1
-        ).sort((a, b) => (
+        ).sort((a:Topic, b:Topic) => (
           b.label < a.label ? 1 : -1
         ))
         setTopicsList(filteredTopics);
     })
   }, [])
 
-  const handleInputChange = (topic) => {
+  const handleInputChange = (topic: Topic) => {
+    console.log(topic);
     setChosenTopic(topic);
   }
 
@@ -61,20 +65,12 @@ const LandingPage = () => {
             </NavLink>
             ))}
             </div>
-            {/* <div className="dropdownArea">
-              <TopicsDropdown 
-                handleSubmit={() => this.handleSubmit()} 
-                handleInputChange={(e) => this.handleInputChange(e)}
-                topicsList={this.state.topicsList}
-              />
-              {/* {this.state.chosenTopic && (
-              <NavLink to={`/map?topic=${this.state.chosenTopic}`} className="navLivk"> Create Map </NavLink>) } */}
-            </div> 
+          </div> 
             {/* <button className="navlink" onClick={() => this.handlePreDefinedClick()}> Pre-defined Map </button> */}
-          </div>
+      </div>
     )}
     {chosenTopic && (
-      <Maps chosenTopic={chosenTopic} handleBackClick={() => this.handleBackClick()}/>
+      <Maps />
     )}
     </Fragment>
   );
