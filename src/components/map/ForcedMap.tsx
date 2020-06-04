@@ -1,47 +1,51 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react';
-
-import ExtraInfo from '../components/ExtraInfo';
-import HelpMenu from '../components/HelpMenu';
-
-import closeHelpIcon from '../assets/close_help_icon.svg';
-import helpIcon from '../assets/help_icon.svg';
-
-
 import * as d3 from "d3";
+
+import ExtraInfo from '../ExtraInfo';
+import HelpMenu from '../HelpMenu';
+
+import closeHelpIcon from '../../assets/close_help_icon.svg';
+import helpIcon from '../../assets/help_icon.svg';
 
 import './map.scss';
 
+import { Data } from './Maps';
+import { Link } from './Maps';
 
-const ForcedMap = ({data}) => {
 
-  const [linkHovered, setLinkHovered] = useState(null);
+
+const ForcedMap: React.FC <{data: Data}> = ({data}) => {
+
+  const [linkHovered, setLinkHovered] = useState<Link[] | null>(null);
   const [helpMenuOpen, toggleHelpMenu] = useState(false);
   const d3Container = useRef(null);
 
+  const { nodes, links } = data;
+
   
-  const linkTypes = [];
+  const linkTypes: Array<string> = [];
   data.links.forEach(link => {
     if (linkTypes.indexOf(link.type) === -1) {
       linkTypes.push(link.type);
     }
   })
 
-  const factionTypes = [];
+  const factionTypes: Array<string> = [];
   data.nodes.forEach(node => {
-    if (factionTypes.indexOf(node.faction) === -1) {
-      factionTypes.push(node.faction);
+    if (factionTypes.indexOf(node.faction.toString()) === -1) {
+      factionTypes.push(node.faction.toString());
     }
   })
 
-  const nodeAndLinksTypes = linkTypes.concat(factionTypes)
-  const nodes = data.nodes;
-  const links = data.links;
-  const width = 600;
-  const height = 600;
+  // const nodeAndLinksTypes: Array<string> = linkTypes.concat(factionTypes);
+
+
+  const width: number = 600;
+  const height: number = 600;
 
 
   const drawMap = () => {
-    const calcDiameter = weight => {
+    const calcDiameter = (weight: number) => {
       let minWeight = Math.min.apply(null, nodes.map(node => node.weight));
       let maxWeight = Math.max.apply(null, nodes.map(node => node.weight));
       if (minWeight === maxWeight) {
@@ -57,7 +61,7 @@ const ForcedMap = ({data}) => {
       return d;
     }
 
-    const calcLinkWidth = weight => {
+    const calcLinkWidth = (weight: number) => {
       const minWeight = Math.min.apply(null, links.map(link => link.weight));
       const maxWeight = Math.max.apply(null, links.map(link => link.weight));
       const minW = 1;
@@ -70,19 +74,18 @@ const ForcedMap = ({data}) => {
     }
 
   
-    const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id))
+    const simulation: any = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links).id((d:any) => d.id))
       .force("charge", d3.forceManyBody().strength(-400))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
 
-    const differentColors = d3.scaleOrdinal(nodeAndLinksTypes, d3.schemeCategory10);
-
-
+    const differentColors = d3.scaleOrdinal(d3.schemeCategory10);
 
     const svg = d3.select(d3Container.current)
-    .attr("viewBox", [-width / 2 - 50, -height / 2 + 60, width, height])
+    .attr("viewBox", `${-width / 2 - 50}, ${-height / 2 + 60}, ${width}, ${height}`)
+    // @ts-ignore
     .call(d3.zoom().on("zoom", () => {
       svg.attr("transform", d3.event.transform)
     }))
@@ -131,12 +134,13 @@ const ForcedMap = ({data}) => {
         .selectAll("g")
         .data(nodes)
         .join("g") 
+        // @ts-ignore
         .call(drag(simulation));
 
       node.append("circle")
         // .attr("stroke", "white")
         // .attr("stroke-width", 1.5)
-        .attr("fill", d => differentColors(d.faction))
+        .attr("fill", (d:any) => differentColors(d.faction))
         .attr("id", d => d.id)
         .attr("class", "nodeCircle")
         .attr("r", d => calcDiameter(d.weight));
@@ -152,7 +156,7 @@ const ForcedMap = ({data}) => {
         // .attr("stroke", "white")
         // .attr("stroke-width", 3);
 
-    const calculateLinkLength = d => {
+    const calculateLinkLength = (d: any) => {
         const x1 = d.source.x;
         const y1 = d.source.y;
         const x2 = d.target.x;
@@ -172,9 +176,9 @@ const ForcedMap = ({data}) => {
         .attr("y2", d => calculateLinkLength(d).targetY);
      
         node.attr("transform", d => `translate(${d.x},${d.y})`)
-        .on("mouseover", d => {
+        .on("mouseover", (d: any) => {
           d3.selectAll('.link')
-          .style("display", l => {
+          .style("display", (l:any) => {
             if ((l.source.id !== d.id) && (l.target.id !== d.id)) {
               return "none"
             }
@@ -189,20 +193,20 @@ const ForcedMap = ({data}) => {
    
   }
 
-  const drag = (simulation) => {
+  const drag = (simulation: any) => {
     
-    const dragstarted = (d) => {
+    const dragstarted = (d: any) => {
         if (!d3.event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
         d.fy = d.y;
       }
     
-    const dragged = (d) => {
+    const dragged = (d: any) => {
         d.fx = d3.event.x;
         d.fy = d3.event.y;
       }
     
-    const dragended = (d) => {
+    const dragended = (d: any) => {
         if (!d3.event.active) simulation.alphaTarget(0);
         d.fx = null;
         d.fy = null;
@@ -222,9 +226,9 @@ const ForcedMap = ({data}) => {
             {linkHovered && 
               <ExtraInfo 
                 linkArr={linkHovered}  
-                closeExtraInfo={() => setLinkHovered(false)}
-                topicLabel={data.topic_label}
-              />}
+                closeExtraInfo={() => setLinkHovered(null)}
+              />
+            }
             <svg ref={d3Container}/>
           </div>
           {helpMenuOpen && <HelpMenu />}

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import LandingPage from './LandingPage';
-import Maps from './map/Maps';
+import LandingPage from './components/LandingPage.tsx';
+import Maps from './components/map/Maps.tsx';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 
