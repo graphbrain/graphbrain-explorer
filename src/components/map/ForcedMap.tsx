@@ -222,7 +222,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
 
       return (
         <Fragment>
-          <div className="contentArea">
+          <div className="contentArea" data-testid="contentArea">
             {linkHovered && 
               <ExtraInfo 
                 linkArr={linkHovered}  

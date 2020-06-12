@@ -33,7 +33,6 @@ const LandingPage: React.FC<{}> = () => {
   }, [])
 
   const handleInputChange = (topic: Topic) => {
-    console.log(topic);
     setChosenTopic(topic);
   }
 
@@ -45,7 +44,7 @@ const LandingPage: React.FC<{}> = () => {
     <Fragment>
     {!chosenTopic && (
       <div className="landingWrapper">
-        <div className="aboutArea">
+        <div className="aboutArea" data-testid="aboutArea">
           <img src={logo} className="App-logo" alt="logo" />
           <div className="mainText">
             <p>Graphbrain is an Artificial Intelligence open-source software library and scientific research tool. It's aim is to facilitate automated meaning extraction and text understanding, as well as the exploration and inference of knowledge.</p>
@@ -54,8 +53,8 @@ const LandingPage: React.FC<{}> = () => {
           </div>
         </div>
           <div className="topicsArea">
-            <h2 className="topicsTitle">Please choose a topic</h2>
-            <div className="topicsList">
+            <h2 className="topicsTitle" data-testid="topicsTitle">Please choose a topic</h2>
+            <div className="topicsList" data-testid="topicsList">
             {topicsList.map(topic => (
             <NavLink 
               key={topic.id}

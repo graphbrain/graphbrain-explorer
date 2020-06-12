@@ -54,7 +54,9 @@ const Maps: React.FC<{}> = () => {
 
   useEffect(() => {
     getData(window.location.search).then(data => {
-     setData(data["viz_blocks"][0]);
+      if (data && data["viz_blocks"]) {
+        setData(data["viz_blocks"][0]);
+      }
   });
   }, [])
 
@@ -73,7 +75,7 @@ const Maps: React.FC<{}> = () => {
     <div className="mapsArea">
     {data && (
       <div className="mapHeader">
-        <img src={backIcon} alt="back" className="backIcon" onClick={handleBackClick}/>
+        <img src={backIcon} alt="back" className="backIcon" data-testid="backIcon" onClick={handleBackClick}/>
         <h2 className="mapTitle">
             {data && data.topic_label && data.topic_label.length === 2 ? 
               data.topic_label.toUpperCase() : 
