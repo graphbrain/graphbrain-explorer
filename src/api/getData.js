@@ -24,7 +24,7 @@ export const getData = async (graphType) => {
   } catch(err) {
     console.log(err);
     return "error";
-  }
+  };
 }
 
 export default getData;
