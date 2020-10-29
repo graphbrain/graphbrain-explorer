@@ -7,7 +7,7 @@ import Maps from './map/Maps';
 
 import logo from '../assets/graphbrain-logo.gif';
 
-import '../App.scss';
+import './landingPage.scss';
 
 export type Topic = {
   id: string,
