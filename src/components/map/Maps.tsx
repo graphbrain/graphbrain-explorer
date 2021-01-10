@@ -8,11 +8,11 @@ import backIcon from '../../assets/back_icon.svg';
 
 import {getData} from '../../api/getData';
 
-import './map.scss';
+import '../../styles/map.scss';
 
 import { Topic } from '../LandingPage';
 
-export type Node = {
+export interface Node {
   faction: number,
   id: string,
   index: 0,
@@ -25,7 +25,7 @@ export type Node = {
   y: number
 }
 
-export type Link = {
+export interface Link {
   id: string,
   directed: boolean,
   index: number,
@@ -40,7 +40,7 @@ export type Link = {
   weight: number
 }
 
-export type Data = {
+export interface Data {
   layout: string,
   links: Array<Link>,
   nodes: Array<Node>,
@@ -68,14 +68,14 @@ const Maps: React.FC<{}> = () => {
     if (data) {
       return <ForcedMap data={data}/>;
     } 
-    else return <Loader />;  
+     return <Loader />;  
   }
 
   return (
     <div className="mapsArea">
     {data && (
       <div className="mapHeader">
-        <img src={backIcon} alt="back" className="backIcon" data-testid="backIcon" onClick={handleBackClick}/>
+        <img src={backIcon} alt="back" className="backIcon" aria-label="backIcon" onClick={handleBackClick}/>
         <h2 className="mapTitle">
             {data && data.topic_label && data.topic_label.length === 2 ? 
               data.topic_label.toUpperCase() : 

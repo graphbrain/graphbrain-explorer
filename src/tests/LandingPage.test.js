@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 
 import '@testing-library/jest-dom/extend-expect';
 
-import LandingPage from "./LandingPage";
+import LandingPage from "../components/LandingPage";
 
 
 describe("<LandingPage />", () => {
@@ -13,7 +13,7 @@ describe("<LandingPage />", () => {
   });
 
   it("renders the about area", async () => {
-    const { getByTestId } = render(<LandingPage/>);
-    expect(getByTestId('aboutArea')).toHaveTextContent('Artificial Intelligence');
+    const { container } = render(<LandingPage/>);
+    expect(container.querySelector('.aboutArea')).toHaveTextContent('Artificial Intelligence');
   })
 });

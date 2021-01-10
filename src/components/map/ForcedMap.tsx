@@ -7,7 +7,7 @@ import HelpMenu from '../HelpMenu';
 import closeHelpIcon from '../../assets/close_help_icon.svg';
 import helpIcon from '../../assets/help_icon.svg';
 
-import './map.scss';
+import '../../styles/map.scss';
 
 import { Data } from './Maps';
 import { Link } from './Maps';
@@ -222,7 +222,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
 
       return (
         <Fragment>
-          <div className="contentArea" data-testid="contentArea">
+          <div className="contentArea">
             {linkHovered && 
               <ExtraInfo 
                 linkArr={linkHovered}  
