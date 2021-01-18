@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import ForcedMap from './ForcedMap';
 import Loader from '../Loader';
+import Error from '../Error'
 
 import backIcon from '../../assets/back_icon.svg';
 
@@ -51,24 +52,19 @@ export interface Data {
 const Maps: React.FC<{}> = () => {
    
   const [data, setData] = useState<Data | null>(null);
+  const [error, setError] = useState<boolean>(false)
 
   useEffect(() => {
     getData(window.location.search).then(data => {
       if (data && data["viz_blocks"]) {
         setData(data["viz_blocks"][0]);
       }
+      else setError(true)
   });
   }, [])
 
   const handleBackClick = () => {
     window.location.href = '/';
-  }
-
-  const mapToRender = () => {
-    if (data) {
-      return <ForcedMap data={data}/>;
-    } 
-     return <Loader />;  
   }
 
   return (
@@ -81,9 +77,11 @@ const Maps: React.FC<{}> = () => {
               data.topic_label.toUpperCase() : 
               data.topic_label}
         </h2> 
+        <ForcedMap data={data}/>
       </div>
       )}
-      {mapToRender()}
+      {!data && !error && <Loader />}
+      {error && <Error/>}
     </div>
   )
 }

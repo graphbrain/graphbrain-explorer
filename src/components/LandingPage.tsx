@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import {getData} from '../api/getData';
 
 import Maps from './map/Maps';
+import Error from './Error'
 
 import logo from '../assets/graphbrain-logo.gif';
 
@@ -20,15 +21,21 @@ const LandingPage: React.FC<{}> = () => {
 
   const [chosenTopic, setChosenTopic] = useState<Topic | null>(null);
   const [topicsList, setTopicsList] = useState<Array<Topic>>([]);
+  const [error, setError] = useState<boolean>(false)
 
   useEffect(() => {
     getData('topics').then(data => {
-      const filteredTopics = data.viz_blocks[0].rows.filter((topic: Topic) => 
+      if(data && data.viz_blocks) {
+        const filteredTopics = data.viz_blocks[0].rows.filter((topic: Topic) => 
         topic.label.split(" ").length < 5 && topic.label.length !== 1
         ).sort((a:Topic, b:Topic) => (
           b.label < a.label ? 1 : -1
         ))
         setTopicsList(filteredTopics);
+      }
+      else {
+        setError(true)
+      }
     })
   }, [])
 
@@ -71,6 +78,7 @@ const LandingPage: React.FC<{}> = () => {
     {chosenTopic && (
       <Maps />
     )}
+    {error && <Error/>}
     </Fragment>
   );
 }
