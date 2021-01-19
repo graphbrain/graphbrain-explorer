@@ -7,7 +7,7 @@ import HelpMenu from '../HelpMenu';
 import closeHelpIcon from '../../assets/close_help_icon.svg';
 import helpIcon from '../../assets/help_icon.svg';
 
-import './map.scss';
+import '../../styles/map.scss';
 
 import { Data } from './Maps';
 import { Link } from './Maps';
@@ -22,7 +22,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
 
   const { nodes, links } = data;
 
-  
+  //Creating an array of unique link types
   const linkTypes: Array<string> = [];
   data.links.forEach(link => {
     if (linkTypes.indexOf(link.type) === -1) {
@@ -30,6 +30,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
     }
   })
 
+  //Creating an array of unique node fuctions
   const factionTypes: Array<string> = [];
   data.nodes.forEach(node => {
     if (factionTypes.indexOf(node.faction.toString()) === -1) {
@@ -37,14 +38,13 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
     }
   })
 
-  // const nodeAndLinksTypes: Array<string> = linkTypes.concat(factionTypes);
-
 
   const width: number = 600;
   const height: number = 600;
 
 
   const drawMap = () => {
+    //calculation relative size of node diameter between min and max sizes
     const calcDiameter = (weight: number) => {
       let minWeight = Math.min.apply(null, nodes.map(node => node.weight));
       let maxWeight = Math.max.apply(null, nodes.map(node => node.weight));
@@ -61,6 +61,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
       return d;
     }
 
+    //calculation relative size of link width between min and max sizes
     const calcLinkWidth = (weight: number) => {
       const minWeight = Math.min.apply(null, links.map(link => link.weight));
       const maxWeight = Math.max.apply(null, links.map(link => link.weight));
@@ -73,10 +74,14 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
       return w;
     }
 
-  
+  //Force layout uses a physics based simulator for positioning visual elements.
+  // Force algorithm is applied to the nodes
     const simulation: any = d3.forceSimulation(nodes)
+  // This force provides links between nodes
       .force("link", d3.forceLink(links).id((d:any) => d.id))
+      //Adds repulsion between nodes
       .force("charge", d3.forceManyBody().strength(-400))
+  //Forces position between the given dimensions
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
@@ -93,7 +98,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
     .append("g")
       .style("font", "10px sans-serif")
  
-
+//Prepares the triangles at the end of the links
     svg.append("defs").selectAll("marker")
     .data(linkTypes)
     .join("marker")
@@ -108,6 +113,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
       .attr("fill", d => differentColors(d))
       .attr("d", "M0,-5L10,0L0,5");
 
+      //Draws the links
     const link = svg.append("g")
       .attr("fill", "none")
       .selectAll("line")
@@ -118,6 +124,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
       .attr('marker-end',d => d.directed ? `url(#arrow-${d.type})` : '')
       .attr('class', 'linkAndArrow')
       .attr("id", d => `link-${d.index}`)
+      //Listens to hovered link and check if it's a two-way link
       .on('mouseover', d => {
         const reversed = links.find(link => d.source.id === link.target.id && d.target.id === link.source.id);
         const checkLinkHovered = reversed ? [d, reversed] : [d];
@@ -126,7 +133,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
       .on('mouseout', d => {
       })
    
-
+    //Creates the nodes
       const node = svg.append("g")
         .attr("fill", "currentColor")
         .attr("stroke-linecap", "round")
@@ -137,15 +144,14 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
         // @ts-ignore
         .call(drag(simulation));
 
+    //Adds the circle
       node.append("circle")
-        // .attr("stroke", "white")
-        // .attr("stroke-width", 1.5)
         .attr("fill", (d:any) => differentColors(d.faction))
         .attr("id", d => d.id)
         .attr("class", "nodeCircle")
         .attr("r", d => calcDiameter(d.weight));
       
-
+    //Adds the topic name near the node
       node.append("text")
         .attr("class", "nodeText")
         .attr("x", 8)
@@ -153,9 +159,8 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
         .text(d => d.label)
         .clone(true).lower()
         .attr("fill", "none")
-        // .attr("stroke", "white")
-        // .attr("stroke-width", 3);
 
+      //Calculating link length according to size of node - so that the arrow won't overlap
     const calculateLinkLength = (d: any) => {
         const x1 = d.source.x;
         const y1 = d.source.y;
@@ -167,6 +172,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
         return {targetX, targetY};
       }
 
+      // This function run at each iteration of the force algorithm, updating the nodes position.
       simulation.on("tick", () => {
         link
         .attr("class", "link")
@@ -176,6 +182,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
         .attr("y2", d => calculateLinkLength(d).targetY);
      
         node.attr("transform", d => `translate(${d.x},${d.y})`)
+        //Shows only relevant links when node is hovered
         .on("mouseover", (d: any) => {
           d3.selectAll('.link')
           .style("display", (l:any) => {
@@ -193,8 +200,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
    
   }
 
-  const drag = (simulation: any) => {
-    
+  const drag = (simulation: any) => {   
     const dragstarted = (d: any) => {
         if (!d3.event.active) simulation.alphaTarget(0.3).restart();
         d.fx = d.x;
@@ -222,7 +228,7 @@ const ForcedMap: React.FC <{data: Data}> = ({data}) => {
 
       return (
         <Fragment>
-          <div className="contentArea" data-testid="contentArea">
+          <div className="contentArea">
             {linkHovered && 
               <ExtraInfo 
                 linkArr={linkHovered}  

@@ -7,7 +7,6 @@ exports[`<Maps /> renders correctly 1`] = `
   >
     <div
       class="loader"
-      data-testid="loader"
     />
   </div>
 </DocumentFragment>

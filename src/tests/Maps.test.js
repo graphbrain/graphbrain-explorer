@@ -3,7 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 import '@testing-library/jest-dom/extend-expect';
 
-import Maps from "./Maps";
+import Maps from "../components/map/Maps";
 
 
 describe("<Maps />", () => {
@@ -28,14 +28,14 @@ describe("<Maps />", () => {
   });
 
   it('renders a loader while fetching data', () => {
-    const { getByTestId } = render(<Maps />);
-    expect(getByTestId('loader')).toBeTruthy();
+    const { container } = render(<Maps />);
+    expect(container.querySelector('.loader')).toBeTruthy();
   })
 
   it ("gets you back to landing page when clicking back", async () => {
     setTimeout(() => {
-      const { container, getByTestId } = render(<Maps/>);
-      const backButton  = getByTestId('backIcon');
+      const { container, getByRole } = render(<Maps/>);
+      const backButton  = getByRole('button', {name: "backIcon"});
       fireEvent.click(backButton);
       expect(container.querySelector('.mapsArea')).toBeNull();
     }, 500)
@@ -43,9 +43,9 @@ describe("<Maps />", () => {
   })
 
   it('renders the map once data is fetched', async () => {
-    const { getByTestId } = render(<Maps />);
+    const { container } = render(<Maps />);
     setTimeout(() => {
-      expect(getByTestId('contentArea')).toBeTruthy();
+      expect(container.querySelector('.contentArea')).toBeTruthy();
     }, 500)
   })
 

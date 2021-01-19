@@ -1,0 +1,66 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "react-hooks"
+  ],
+  "ignorePatterns": [
+    "node_modules/"
+  ],
+  "globals": {
+    "afterAll": true,
+    "afterEach": true,
+    "beforeAll": true,
+    "beforeEach": true,
+    "describe": true,
+    "expect": true,
+    "it": true,
+    "xit": true,
+    "jest": true,
+    "test": true,
+    "xtest": true,
+    "jasmine": true
+  },
+  "rules": {
+    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }],
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+    "max-len": ["error", { "code": 120, "ignoreComments": true, "ignoreStrings": true }],
+    "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
+    "object-curly-newline": ["error", {
+      "ObjectExpression": { "minProperties": 10, "multiline": true, "consistent": true },
+      "ObjectPattern": { "minProperties": 10, "multiline": true, "consistent": true }
+    }],
+    "padded-blocks": ["error", { "classes": "always" }],
+    "react/forbid-prop-types": ["off"],
+    "import/prefer-default-export": ["off"],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
+    "react/jsx-indent": [2, 4],
+    "react/jsx-indent-props": [2, 4],
+    "react/prop-types": ["error", { "ignore": [ "children", "className" ] }],
+    "react/destructuring-assignment": ["error", "always", { "ignoreClassFields": true }],
+    "react/jsx-props-no-spreading": ["off"],
+    "react/state-in-constructor": ["off"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {"devDependencies": [
+        "**/*.test.js", 
+        "**/*.test.jsx"
+      ]}
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": ["on"],
+    "import/named": ["off"],
+    "import/no-cycle": ["off"]
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
+}

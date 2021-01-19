@@ -1,13 +1,12 @@
 
 import React from 'react';
-import './loader.scss';
+import '../styles/loader.scss';
 
 
 const Loader: React.FC = () => {
   return (
     <div
       className="loader"
-      data-testid="loader"
     />
   );
 };

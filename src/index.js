@@ -12,10 +12,10 @@ import * as serviceWorker from './serviceWorker';
 
 const Index = () => (
   <Router>
-    <div>
+    <main>
       <Route exact path="/" component={LandingPage} />
       <Route path="/topic" component={Maps} />
-    </div>
+    </main>
   </Router>
 )
 

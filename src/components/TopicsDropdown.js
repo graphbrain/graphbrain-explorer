@@ -1,6 +1,6 @@
 // import React from 'react';
 
-// import './topicsDropdown.scss';
+// import '../styles/topicsDropdown.scss';
 
 
 // const TopicsDropdown = (props) => {

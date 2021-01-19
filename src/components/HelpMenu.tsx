@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './map/map.scss';
+import '../styles/map.scss';
 
 
 const HelpMenu: React.FC = () => (

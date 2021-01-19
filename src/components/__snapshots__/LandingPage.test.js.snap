@@ -5,9 +5,8 @@ exports[`<LandingPage /> renders correctly 1`] = `
   <div
     class="landingWrapper"
   >
-    <div
+    <aside
       class="aboutArea"
-      data-testid="aboutArea"
     >
       <img
         alt="logo"
@@ -27,19 +26,17 @@ exports[`<LandingPage /> renders correctly 1`] = `
            We invite you to explore how the various actors, topics, places and events are interconnected through relations of cooperation, common interest and conflict, through the various viewpoints present in the media.
         </p>
       </div>
-    </div>
+    </aside>
     <div
       class="topicsArea"
     >
       <h2
         class="topicsTitle"
-        data-testid="topicsTitle"
       >
         Please choose a topic
       </h2>
-      <div
+      <nav
         class="topicsList"
-        data-testid="topicsList"
       />
     </div>
   </div>
